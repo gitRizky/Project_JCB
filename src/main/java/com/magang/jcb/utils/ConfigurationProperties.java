@@ -25,6 +25,20 @@ public class ConfigurationProperties {
 	@Value("${endDate}")
 	private String endDate;
 	
+	@Value("${surveyor}")
+	private String surveyor;
+	
+	@Value("${searchKeyCompleted}")
+	private String searchKeyCompleted;
+	
+	public String getSearchKeyCompleted() {
+		return searchKeyCompleted;
+	}
+
+	public String getSurveyor() {
+		return surveyor;
+	}
+
 	public String getStartDate() {
 		return startDate;
 	}

@@ -4,12 +4,16 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.magang.jcb.configs.AutomationFrameworkConfigJava;
 import com.magang.jcb.drivers.DriverSingleton;
+import com.magang.jcb.pages.CompletedPage;
 import com.magang.jcb.pages.LoginPages;
 import com.magang.jcb.pages.ReportPage;
 import com.magang.jcb.utils.ConfigurationProperties;
@@ -33,6 +37,7 @@ public class StepDefinition {
 	private WebDriver driver;
 	private LoginPages login;
 	private ReportPage reportPage;
+	private CompletedPage completedPage;
 	TestCases[] testCases;
 	ExtentTest extentTest;
 	static ExtentReports report = new ExtentReports("src/main/resources/TestReport.html");
@@ -46,6 +51,7 @@ public class StepDefinition {
 		driver = DriverSingleton.getDriver();
 		login = new LoginPages();
 		reportPage = new ReportPage();
+		completedPage = new CompletedPage();
 		testCases = TestCases.values();
 		this.extentTest = report.startTest(testCases[Utility.testCount].getTestName());
 		Utility.testCount++;
@@ -84,7 +90,7 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS,"Muncul pesan selamat datang superadmin2");
 	}
 	
-	//Report Activity
+	//============================Report Activity=================================
 	
 	@When("^Menampilkan menu reporting")
 	public void toReport() {
@@ -118,12 +124,72 @@ public class StepDefinition {
 	}
 	
 	@Then("^Unduh template laporan")
-	public void filleDate() {
+	public void downloadReport2() {
 		reportPage.downloadReport2();
 		extentTest.log(LogStatus.PASS,"Unduh template laporan");
+		
 	}
 	
+	//============================Completed Activity============================
 	
+	@When("^Menampilkan menu completed")
+	public void toCompleted(){
+		reportPage.logout();
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		login.inputUsername(configProperties.getSurveyor());
+		login.inputPassword(configProperties.getPassword());
+		login.clickButtonLogin();
+		completedPage.toCompleted();
+		assertThat(completedPage.getTxtDataCompleted(), containsString("completed"));
+		extentTest.log(LogStatus.PASS,"Menampilkan menu completed");
+	}
+	
+	@When("^Memilih dari drop down list complete")
+	public void chooseItems() {
+		completedPage.chooseArea();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list complete");
+	}	
+	
+	@When("^Menampilkan hasil filter")
+	public void filterData() {
+		completedPage.testFilter();
+		extentTest.log(LogStatus.FAIL,"Menampilkan hasil filter");
+	}	
+	
+	@When("^Mencari data")
+	public void search() {
+		completedPage.searchData(configProperties.getSearchKeyCompleted());
+		assertThat(completedPage.getTxtCheck(), containsString("chigo"));
+		extentTest.log(LogStatus.PASS,"Mencari data");
+	}	
+	
+	@When("^Menampilkan foto laporan")
+	public void viewPhoto() {
+		completedPage.viewPhoto();
+		assertThat(completedPage.getMyModalLabel(), containsString("view"));
+		completedPage.close();
+		extentTest.log(LogStatus.PASS,"Menampilkan foto laporan");
+	}	
+	
+	@When("^Menampilkan Info EDC")
+	public void viewEDC() {
+		completedPage.viewEDC();
+		assertThat(completedPage.getMyModalLabel(), containsString("view"));
+		completedPage.close();
+		extentTest.log(LogStatus.PASS,"Menampilkan Info EDC");
+	}
+	
+	@Then("^Mengganti halaman aktif")
+	public void changePage() {
+		completedPage.clearSearch();
+		completedPage.changePage();
+		extentTest.log(LogStatus.PASS,"Mengganti halaman aktif");
+	}
 
 //	@After
 //	public void closeObjects() {

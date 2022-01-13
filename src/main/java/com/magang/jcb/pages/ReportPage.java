@@ -39,6 +39,9 @@ private WebDriver driver;
 	
 	@FindBy(xpath = "//a[@class='btn btn-success']")
 	private WebElement newTempBtn;
+	
+	@FindBy(xpath = "//span[normalize-space()='Logout']")
+	private WebElement logout;
 
 	public String getTxtReport() {
 		return txtReport.getText();
@@ -83,5 +86,9 @@ private WebDriver driver;
 	public void downloadReport2() {
 		newTempBtn.click();
 		
+	}
+	
+	public void logout() {
+		this.logout.click();
 	}
 }
