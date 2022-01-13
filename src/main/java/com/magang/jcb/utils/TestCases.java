@@ -2,7 +2,7 @@ package com.magang.jcb.utils;
 
 public enum TestCases {
 
-	T1("");
+	T1("input username and password");
 
 	private String testName;
 

@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Chrome implements DriverStrategy {
 	public WebDriver setStrategy() {
-		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "D:/App/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		return driver;
 		
