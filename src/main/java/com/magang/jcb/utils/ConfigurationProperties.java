@@ -19,6 +19,20 @@ public class ConfigurationProperties {
 	@Value("${messageLogin}")
 	private String messageLogin;
 	
+	@Value("${startDate}")
+	private String startDate;
+	
+	@Value("${endDate}")
+	private String endDate;
+	
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
 	public String getBrowser() {
 		return browser;
 	}
