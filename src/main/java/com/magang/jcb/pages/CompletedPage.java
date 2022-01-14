@@ -55,6 +55,13 @@ private WebDriver driver;
 	@FindBy(id = "data-worklist_previous")
 	private WebElement prevData;
 	
+	@FindBy(xpath = "//*[@id=\"sidebar\"]/div/div[1]/ul[2]/li[12]/a")
+	private WebElement logout;
+	
+	public void logout() {
+		logout.click();
+	}
+	
 	public void changePage() {
 		waiting();
 		nextData.click();

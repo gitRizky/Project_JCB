@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +20,7 @@ import com.magang.jcb.pages.LoginPages;
 import com.magang.jcb.pages.ReportPage;
 import com.magang.jcb.utils.ConfigurationProperties;
 import com.magang.jcb.utils.Constans;
+import com.magang.jcb.utils.GetScreenShot;
 import com.magang.jcb.utils.TestCases;
 import com.magang.jcb.utils.Utility;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -91,7 +94,7 @@ public class StepDefinition {
 	}
 	
 	//============================Report Activity=================================
-	
+/*	
 	@When("^Menampilkan menu reporting")
 	public void toReport() {
 		reportPage.toReport();
@@ -129,7 +132,7 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS,"Unduh template laporan");
 		
 	}
-	
+*/	
 	//============================Completed Activity============================
 	
 	@When("^Menampilkan menu completed")
@@ -156,9 +159,10 @@ public class StepDefinition {
 	}	
 	
 	@When("^Menampilkan hasil filter")
-	public void filterData() {
+	public void filterData() throws Throwable {
 		completedPage.testFilter();
-		extentTest.log(LogStatus.FAIL,"Menampilkan hasil filter");
+		String screenShotPath = GetScreenShot.capture(driver, "Gagal menampilkan hasil filter");
+		extentTest.log(LogStatus.FAIL,"Menampilkan hasil filter" + extentTest.addScreenCapture(screenShotPath));
 	}	
 	
 	@When("^Mencari data")
@@ -189,13 +193,14 @@ public class StepDefinition {
 		completedPage.clearSearch();
 		completedPage.changePage();
 		extentTest.log(LogStatus.PASS,"Mengganti halaman aktif");
+		completedPage.logout();
 	}
 
-//	@After
-//	public void closeObjects() {
-//		report.endTest(this.extentTest);
-//		report.flush();
-//
-//	}
+	@After
+	public void closeObjects() {
+		report.endTest(this.extentTest);
+		report.flush();
+
+	}
 
 }
