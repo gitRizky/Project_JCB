@@ -18,6 +18,8 @@ import com.magang.jcb.drivers.DriverSingleton;
 import com.magang.jcb.pages.CompletedPage;
 import com.magang.jcb.pages.LoginPages;
 import com.magang.jcb.pages.ReportPage;
+import com.magang.jcb.pages.VisitPage;
+import com.magang.jcb.pages.WorklistPage;
 import com.magang.jcb.utils.ConfigurationProperties;
 import com.magang.jcb.utils.Constans;
 import com.magang.jcb.utils.GetScreenShot;
@@ -41,6 +43,8 @@ public class StepDefinition {
 	private LoginPages login;
 	private ReportPage reportPage;
 	private CompletedPage completedPage;
+	WorklistPage worklistPage;
+	VisitPage visitPage;
 	TestCases[] testCases;
 	ExtentTest extentTest;
 	static ExtentReports report = new ExtentReports("src/main/resources/TestReport.html");
@@ -55,6 +59,8 @@ public class StepDefinition {
 		login = new LoginPages();
 		reportPage = new ReportPage();
 		completedPage = new CompletedPage();
+		worklistPage = new WorklistPage();
+		visitPage = new VisitPage();
 		testCases = TestCases.values();
 		this.extentTest = report.startTest(testCases[Utility.testCount].getTestName());
 		Utility.testCount++;
@@ -94,7 +100,7 @@ public class StepDefinition {
 	}
 	
 	//============================Report Activity=================================
-/*	
+	
 	@When("^Menampilkan menu reporting")
 	public void toReport() {
 		reportPage.toReport();
@@ -132,11 +138,11 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS,"Unduh template laporan");
 		
 	}
-*/	
-	//============================Completed Activity============================
 	
-	@When("^Menampilkan menu completed")
-	public void toCompleted(){
+	//============================Worklist Activity=============================
+	
+	@When("^Menampilkan submenu")
+	public void submenuWorklist() {
 		reportPage.logout();
 		try {
 			Thread.sleep(3000);
@@ -147,6 +153,102 @@ public class StepDefinition {
 		login.inputUsername(configProperties.getSurveyor());
 		login.inputPassword(configProperties.getPassword());
 		login.clickButtonLogin();
+		worklistPage.toWorklist();
+		extentTest.log(LogStatus.PASS,"Menampilkan submenu");
+	}
+	
+	@When("^Menampilkan Data Merchant yang belum divisit")
+	public void subMenuNewData(){
+		worklistPage.toNewData();
+		extentTest.log(LogStatus.PASS,"Menampilkan Data Merchant yang belum divisit");
+	}
+	
+	@When("^Memilih drop down list worklist")
+	public void newDataDropDown(){
+		worklistPage.chooseArea();
+		extentTest.log(LogStatus.PASS,"Memilih drop down list worklist");
+	}
+	
+	@When("^Menampilkan filter data")
+	public void flterNewData(){
+		worklistPage.clickFilter();
+		extentTest.log(LogStatus.PASS,"Menampilkan filter data");
+	}
+	
+	@When("^Mencari data newdata")
+	public void findData(){
+		worklistPage.searchItem("sate");
+		extentTest.log(LogStatus.PASS,"Mencari data newdata");
+	}
+	
+	@When("^Menampilkan form visit merchant")
+	public void visitMerchant(){
+		worklistPage.toVisitItem();
+		extentTest.log(LogStatus.PASS,"Menampilkan form visit merchant");
+	}
+	
+	@When("^Menampilkan form update data")
+	public void updateData(){
+		visitPage.editData();
+		extentTest.log(LogStatus.PASS,"Menampilkan form update data");
+	}
+	
+	@When("^Menyimpan perubahan data")
+	public void saveUpdate(){
+		assertThat(visitPage.successEdit().toLowerCase(), containsString("success"));
+		extentTest.log(LogStatus.PASS,"Menyimpan perubahan data");
+	}
+	
+	@When("^Menampilkan form add data bank")
+	public void addTID(){
+		visitPage.addNewTID();
+		extentTest.log(LogStatus.PASS,"Menyimpan perubahan data bank");
+	}
+	
+	@When("^Memilih dari drop down list")
+	public void chooseBank(){
+		visitPage.chooseBank();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list");
+	}
+	
+	@When("^Mengisi MID")
+	public void fillMID(){
+		visitPage.fillMID("MK2221I");
+		extentTest.log(LogStatus.PASS,"Mengisi MID");
+	}
+	
+	@When("^Mengisi TID")
+	public void fillTID(){
+		visitPage.fillTID("CD5231X");
+		extentTest.log(LogStatus.PASS,"Mengisi TID");
+	}
+	@When("^Memilih dari drop down list acceptance")
+	public void chooseAccept(){
+		visitPage.confirmJCB();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list acceptance");
+	}
+	@When("^Upload foto")
+	public void uploadValid(){
+		visitPage.chooseFile("C:\\Users\\Lenovo\\Downloads\\Background JC.jpg");
+		extentTest.log(LogStatus.PASS,"Upload foto");
+	}
+	@When("^Menyimpan data")
+	public void submitForm() throws Throwable{
+		visitPage.submitJCB();
+		String screenShotPath = GetScreenShot.capture(driver, "Gagal menampilkan hasil filter");
+		extentTest.log(LogStatus.FAIL,"Menyimpan data" + extentTest.addScreenCapture(screenShotPath));
+	}
+	
+	@Then("^Tidak menyimpan data")
+	public void cancelForm(){
+		visitPage.cancelJCB();
+		extentTest.log(LogStatus.PASS,"Tidak menyimpan data");
+	}
+	
+	//============================Completed Activity============================
+	
+	@When("^Menampilkan menu completed")
+	public void toCompleted(){
 		completedPage.toCompleted();
 		assertThat(completedPage.getTxtDataCompleted(), containsString("completed"));
 		extentTest.log(LogStatus.PASS,"Menampilkan menu completed");
