@@ -27,5 +27,10 @@ Feature: Worklist
 		And Cek Checkbox Sticker Sheet
 		And Cek Checkbox Pen
 		And Cek Checkbox Reserved Sign
-		Then Simpan Data
-		
+		And Simpan Data
+		And Menampilkan form visit merchant other conditions
+		And Menampilkan data merchant menu other conditions
+		And Menampilkan form visit status
+		And Memilih dari drop down list Jika pilih Others akan muncul kolom tambahan
+		And Konfirmasi data other conditions
+		Then Mengganti halaman aktif Worklist

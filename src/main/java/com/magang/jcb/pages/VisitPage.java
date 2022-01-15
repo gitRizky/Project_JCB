@@ -17,6 +17,9 @@ public class VisitPage {
 		PageFactory.initElements(driver, this);
 	}
 
+	@FindBy(css = "#content > div.row > div.col-lg-12.m-b-5 > div > strong")
+	private WebElement successCreateMsg;
+
 	@FindBy(css = "#content > div.row > div:nth-child(2) > form > div.panel.panel-info > div.panel-body > div > a")
 	private WebElement editData;
 
@@ -188,22 +191,22 @@ public class VisitPage {
 
 	public void checkItems1() {
 		cssCheckbox1.click();
-		waiting();
+//		waiting();
 	}
 
 	public void checkItems2() {
 		cssCheckbox2.click();
-		waiting();
+//		waiting();
 	}
 
 	public void checkItems3() {
 		cssCheckbox3.click();
-		waiting();
+//		waiting();
 	}
 
 	public void checkItems4() {
 		cssCheckbox4.click();
-		waiting();
+//		waiting();
 	}
 
 	public void submitVisited() {
@@ -230,6 +233,10 @@ public class VisitPage {
 	private void _key(WebElement e) {
 		e.sendKeys(Keys.DOWN);
 		e.sendKeys(Keys.ENTER);
+	}
+
+	public WebElement getSuccessCreateMsg() {
+		return successCreateMsg;
 	}
 
 }
