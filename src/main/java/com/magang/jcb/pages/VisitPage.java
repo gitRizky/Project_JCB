@@ -3,6 +3,7 @@ package com.magang.jcb.pages;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -96,19 +97,9 @@ public class VisitPage {
 
 	public void editData() {
 		this.editData.click();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		waiting();
 		btnSave2.click();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		waiting();
 	}
 
 	public String successEdit() {
@@ -117,12 +108,7 @@ public class VisitPage {
 
 	public void addNewTID() {
 		addTID.click();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		waiting();
 	}
 
 	public void chooseBank() {
@@ -151,6 +137,9 @@ public class VisitPage {
 
 	public void submitJCB() {
 		btnSave.click();
+		waiting();
+		waiting();
+		waiting();
 	}
 
 	public String getTxtError() {
@@ -159,6 +148,7 @@ public class VisitPage {
 
 	public void cancelJCB() {
 		cancelBank.click();
+		waiting();
 	}
 
 	public void chooseColSticker() {
@@ -196,22 +186,45 @@ public class VisitPage {
 		_key(op_open_close);
 	}
 
-	public void checkItems() {
+	public void checkItems1() {
 		cssCheckbox1.click();
+		waiting();
+	}
+
+	public void checkItems2() {
 		cssCheckbox2.click();
+		waiting();
+	}
+
+	public void checkItems3() {
 		cssCheckbox3.click();
+		waiting();
+	}
+
+	public void checkItems4() {
 		cssCheckbox4.click();
+		waiting();
+	}
+
+	public void submitVisited() {
 		submit.click();
+		waiting();
+		Actions act = new Actions(driver);
+		act.moveToElement(finalFailMsg).perform();
+		waiting();
+	}
+
+	public String getFailedTxt() {
+		return finalFailMsg.getText();
+	}
+
+	private void waiting() {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public String getFailedTxt() {
-		return finalFailMsg.getText();
 	}
 
 	private void _key(WebElement e) {

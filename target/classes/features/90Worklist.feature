@@ -9,10 +9,23 @@ Feature: Worklist
 		And Menampilkan form update data
 		And Menyimpan perubahan data
 		And Menampilkan form add data bank
-		And Memilih dari drop down list
+		And Memilih dari drop down list bank
 		And Mengisi MID
 		And Mengisi TID
 		And Memilih dari drop down list acceptance
 		And Upload foto
 		And Menyimpan data
-		Then Tidak menyimpan data
+		And Tidak menyimpan data
+		And Memilih dari drop down list JCB Sticker
+		And Memilih dari drop down list JCB Logo
+		And Memilih dari drop down list JCB Opn/Cls
+		And Memilih dari drop down list JCB Name Card
+		And Memilih dari drop down list Amex Sticker
+		And Memilih dari drop down list Amex Logo
+		And Memilih dari drop down list Amex Opn/Cls
+		And Cek Checkbox Bill Holder
+		And Cek Checkbox Sticker Sheet
+		And Cek Checkbox Pen
+		And Cek Checkbox Reserved Sign
+		Then Simpan Data
+		

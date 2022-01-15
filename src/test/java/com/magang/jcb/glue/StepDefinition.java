@@ -205,10 +205,10 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS,"Menyimpan perubahan data bank");
 	}
 	
-	@When("^Memilih dari drop down list")
+	@When("^Memilih dari drop down list bank")
 	public void chooseBank(){
 		visitPage.chooseBank();
-		extentTest.log(LogStatus.PASS,"Memilih dari drop down list");
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list bank");
 	}
 	
 	@When("^Mengisi MID")
@@ -235,14 +235,87 @@ public class StepDefinition {
 	@When("^Menyimpan data")
 	public void submitForm() throws Throwable{
 		visitPage.submitJCB();
-		String screenShotPath = GetScreenShot.capture(driver, "Gagal menampilkan hasil filter");
+		String screenShotPath = GetScreenShot.capture(driver, "Gagal menyimpan data");
 		extentTest.log(LogStatus.FAIL,"Menyimpan data" + extentTest.addScreenCapture(screenShotPath));
 	}
 	
-	@Then("^Tidak menyimpan data")
+	@When("^Tidak menyimpan data")
 	public void cancelForm(){
 		visitPage.cancelJCB();
 		extentTest.log(LogStatus.PASS,"Tidak menyimpan data");
+	}
+	
+	@When("^Memilih dari drop down list JCB Sticker")
+	public void chooseJCBSticker(){
+		visitPage.chooseColSticker();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list JCB Sticker");
+	}
+	
+	@When("^Memilih dari drop down list JCB Logo")
+	public void chooseJCBLogo(){
+		visitPage.chooseColStand();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list JCB Logo");
+	}
+	
+	@When("^Memilih dari drop down list JCB Opn/Cls")
+	public void chooseJCBOpnCls(){
+		visitPage.chooseColOpenCls();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list JCB Opn/Cls");
+	}
+	
+	@When("^Memilih dari drop down list JCB Name Card")
+	public void chooseJCBNmCrd(){
+		visitPage.chooseColCard();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list JCB Name Card");
+	}
+	
+	@When("^Memilih dari drop down list Amex Sticker")
+	public void chooseAmexSticker(){
+		visitPage.chooseASticker();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list Amex Sticker");
+	}
+	
+	@When("^Memilih dari drop down list Amex Logo")
+	public void chooseAmexLogo(){
+		visitPage.choooseALogo();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list Amex Logo");
+	}
+	
+	@When("^Memilih dari drop down list Amex Opn/Cls")
+	public void chooseAmexOpnCls(){
+		visitPage.chooseAOpCls();
+		extentTest.log(LogStatus.PASS,"Memilih dari drop down list Amex Opn/Cls");
+	}
+	
+	@When("^Cek Checkbox Bill Holder")
+	public void cekBillHolder(){
+		visitPage.checkItems1();
+		extentTest.log(LogStatus.PASS,"Cek Checkbox Bill Holder");
+	}
+	
+	@When("^Cek Checkbox Sticker Sheet")
+	public void cekStckSht(){
+		visitPage.checkItems2();
+		extentTest.log(LogStatus.PASS,"Cek Checkbox Sticker Sheet");
+	}
+	
+	@When("^Cek Checkbox Pen")
+	public void cekPen(){
+		visitPage.checkItems3();
+		extentTest.log(LogStatus.PASS,"Cek Checkbox Pen");
+	}
+	
+	@When("^Cek Checkbox Reserved Sign")
+	public void cekSign(){
+		visitPage.checkItems4();
+		extentTest.log(LogStatus.PASS,"Cek Checkbox Reserved Sign");
+	}
+	
+	@Then("^Simpan Data")
+	public void submitVisited() throws Throwable{
+		visitPage.submitVisited();
+		String screenShotPath = GetScreenShot.capture(driver, "Gagal menyimpan data");
+		extentTest.log(LogStatus.FAIL,"Simpan Data" + extentTest.addScreenCapture(screenShotPath));
 	}
 	
 	//============================Completed Activity============================

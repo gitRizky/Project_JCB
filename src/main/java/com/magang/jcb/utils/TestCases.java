@@ -2,7 +2,7 @@ package com.magang.jcb.utils;
 
 public enum TestCases {
 
-	T1("input username and password"), T8("Modul Worklist"), T9("Modul Completed"), T10("Modul Report");
+	T1("input username and password"), T8("Modul Report"), T9("Modul Worklist"), T10("Modul Completed");
 
 	private String testName;
 
