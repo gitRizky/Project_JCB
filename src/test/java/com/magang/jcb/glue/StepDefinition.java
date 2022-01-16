@@ -16,7 +16,11 @@ import org.springframework.test.context.ContextConfiguration;
 import com.magang.jcb.configs.AutomationFrameworkConfigJava;
 import com.magang.jcb.drivers.DriverSingleton;
 import com.magang.jcb.pages.CompletedPage;
+import com.magang.jcb.pages.DashboardPages;
 import com.magang.jcb.pages.LoginPages;
+import com.magang.jcb.pages.MasterAreaPages;
+import com.magang.jcb.pages.MasterKotaPages;
+import com.magang.jcb.pages.MasterUserPages;
 import com.magang.jcb.pages.ReportPage;
 import com.magang.jcb.pages.VisitOtherPage;
 import com.magang.jcb.pages.VisitPage;
@@ -43,6 +47,10 @@ import io.cucumber.spring.CucumberContextConfiguration;
 public class StepDefinition {
 	private WebDriver driver;
 	private LoginPages login;
+	private DashboardPages db;
+	private MasterUserPages user;
+	private MasterKotaPages kota;
+	private MasterAreaPages area;
 	private ReportPage reportPage;
 	private CompletedPage completedPage;
 	WorklistPage worklistPage;
@@ -72,8 +80,7 @@ public class StepDefinition {
 		Utility.testCount++;
 	}
 
-	// ============================ Login Activity
-	// =======================================
+	// ============================ Login Activity =======================================
 
 	@Given("^Menampilkan form login")
 	public void Menampilkan_form_login() {
@@ -105,6 +112,149 @@ public class StepDefinition {
 		assertEquals(configProperties.getMessageLogin(), login.getMessageText());
 		extentTest.log(LogStatus.PASS, "Muncul pesan selamat datang superadmin2");
 	}
+	
+	//============================ Dashboard Activity ============================
+		@When("^Menuju halaman dashboard")
+		public void Menuju_halaman_dashboard() {
+			db.gotoDashboardPage();
+			extentTest.log(LogStatus.PASS,"Menuju halaman dashboard");
+		}
+		
+		@When("^Menampilkan jumlah monthly visit")
+		public void Menampilkan_jumlah_monthly_visit() {
+			assertEquals(configProperties.getM1(), db.getMonthly());
+			extentTest.log(LogStatus.PASS,"Menampilkan jumlah monthly visit");
+		}
+		
+		@When("^Menampilkan jumlah unvisit")
+		public void Menampilkan_jumlah_unvisit() {
+			assertEquals(configProperties.getM2(), db.getUnvisit());
+			extentTest.log(LogStatus.PASS,"Menampilkan jumlah unvisit");
+		}
+		
+		@When("^Menampilkan jumlah monthly price")
+		public void Menampilkan_jumlah_monthly_price() {
+			assertEquals(configProperties.getM3(), db.getMonthlyPrice());
+			extentTest.log(LogStatus.PASS, "Menampilkan jumlah monthly price");
+		}
+		
+		@When("^Menampilkan jumlah total price")
+		public void Menampilkan_jumlah_total_price() {
+			assertEquals(configProperties.getM4(), db.getTotalPrice());
+			extentTest.log(LogStatus.PASS, "Menampilkan jumlah total price");
+		}
+		
+		@Then("^Menampilkan data table summary by area")
+		public void Menampilkan_data_table_summary_by_area() {
+			assertEquals(configProperties.getM5(), db.getSummary());
+			extentTest.log(LogStatus.PASS, "Menampilkan data table summary by area");
+		}
+		
+		//============================ Master User Activity ==========================
+		@When("^Menampilkan dropdown menu master")
+		public void Menampilkan_dropdown_menu_master(){
+			user.gotoMaster();
+			extentTest.log(LogStatus.PASS, "Menampilkan dropdown menu master");
+		}
+		
+		@When("^Menampilkan data table user")
+		public void Menampilkan_data_table_user() {
+			user.gotoUser();
+			extentTest.log(LogStatus.PASS, "Menampilkan data table user");
+		}
+		
+		
+		@When("^Menampilkan form tambah data user")
+		public void Menampilkan_form_tambah_data_user() {
+			user.clickBtnAdd();
+			extentTest.log(LogStatus.PASS, "Menampilkan form tambah data user");
+		}
+		
+		@When("^Mengisi NIK")
+		public void Mengisi_NIK() {
+			user.inputNik(configProperties.getNik());
+			extentTest.log(LogStatus.PASS, "Mengisi NIK");
+		}
+		
+		@When("^Mengisi nama")
+		public void Mengisi_nama() {
+			user.inputName(configProperties.getName());
+			extentTest.log(LogStatus.PASS, "Mengisi nama");
+		}
+		
+		@When("^Mengisi username user")
+		public void UMengisi_username() {
+			user.inputUsername(configProperties.getUsernameU());
+			extentTest.log(LogStatus.PASS, "Mengisi username");
+		}
+		
+		@When("^Mengisi password user")
+		public void UMengisi_Password() {
+			user.inputPassword(configProperties.getPasswordU());
+			extentTest.log(LogStatus.PASS, "Mengisi Password");
+		}
+		
+		@When("^Privilege")
+		public void privilege() {
+			user.dropdwonPrivilege(configProperties.getPrivilege());
+			extentTest.log(LogStatus.PASS, "Privilege");
+		}
+		
+		@Then("^Menambahkan data")
+		public void Menambahkan_data() {
+			user.clickBtnSave();
+			extentTest.log(LogStatus.PASS, "Menambahkan data");
+		}
+		
+		//============================ Master Kota Activity ==========================
+		@When("^Menampilkan data kota")
+		public void Menampilkan_data_kota() {
+			kota.clickGotoKota();
+			extentTest.log(LogStatus.PASS, "Menampilkan data kota");
+		}
+		
+		@When("^Menampilkan form data kota")
+		public void Menampilkan_form_data_kota() {
+			kota.clickBtnAddKota();
+			extentTest.log(LogStatus.PASS, "Menampilkan form data kota");
+		}
+		
+		@When("^Mengisi nama kota")
+		public void Mengisi_nama_kota() {
+			kota.inputKota(configProperties.getKota2());
+			extentTest.log(LogStatus.PASS, "Mengisi nama kota");
+		}
+		
+		@Then("^Menambahkan data kota")
+		public void Menambahkan_data_kota() {
+			kota.clickSaveKota();
+			extentTest.log(LogStatus.PASS, "Menambahkan data");
+		}
+		
+		//============================ Master area activity ==========================
+		@When("^Menampilkan data area")
+		public void Menampilkan_data_area() {
+			area.clickArea();
+			extentTest.log(LogStatus.PASS, "Menampilkan data area");
+		}
+		
+		@When("^Menampilkan form data area")
+		public void Menampilkan_form_data_area() {
+			area.clickBtnAdd();
+			extentTest.log(LogStatus.PASS, "Menampilkan form data area");
+		}
+		
+		@When("^Mengisi nama area")
+		public void Mengisi_nama_area() {
+			area.inputArea(configProperties.getArea2());
+			extentTest.log(LogStatus.PASS, "Mengisi nama area");
+		}
+		
+		@Then("^Menambahkan data area")
+		public void Menambahkan_data_area() {
+			area.clickSave();
+			extentTest.log(LogStatus.PASS, "Menambahkan data");
+		}
 
 	// ============================Report Activity=================================
 
