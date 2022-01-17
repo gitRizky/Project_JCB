@@ -4,12 +4,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-import java.io.IOException;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
@@ -80,7 +75,7 @@ public class StepDefinition {
 		Utility.testCount++;
 	}
 
-	// ============================ Login Activity =======================================
+	// ============================ Login Activity=====================================
 
 	@Given("^Menampilkan form login")
 	public void Menampilkan_form_login() {
@@ -112,152 +107,151 @@ public class StepDefinition {
 		assertEquals(configProperties.getMessageLogin(), login.getMessageText());
 		extentTest.log(LogStatus.PASS, "Muncul pesan selamat datang superadmin2");
 	}
-	
-	//============================ Dashboard Activity ============================
-		@When("^Menuju halaman dashboard")
-		public void Menuju_halaman_dashboard() {
-			db.gotoDashboardPage();
-			extentTest.log(LogStatus.PASS,"Menuju halaman dashboard");
-		}
-		
-		@When("^Menampilkan jumlah monthly visit")
-		public void Menampilkan_jumlah_monthly_visit() {
-			assertEquals(configProperties.getM1(), db.getMonthly());
-			extentTest.log(LogStatus.PASS,"Menampilkan jumlah monthly visit");
-		}
-		
-		@When("^Menampilkan jumlah unvisit")
-		public void Menampilkan_jumlah_unvisit() {
-			assertEquals(configProperties.getM2(), db.getUnvisit());
-			extentTest.log(LogStatus.PASS,"Menampilkan jumlah unvisit");
-		}
-		
-		@When("^Menampilkan jumlah monthly price")
-		public void Menampilkan_jumlah_monthly_price() {
-			assertEquals(configProperties.getM3(), db.getMonthlyPrice());
-			extentTest.log(LogStatus.PASS, "Menampilkan jumlah monthly price");
-		}
-		
-		@When("^Menampilkan jumlah total price")
-		public void Menampilkan_jumlah_total_price() {
-			assertEquals(configProperties.getM4(), db.getTotalPrice());
-			extentTest.log(LogStatus.PASS, "Menampilkan jumlah total price");
-		}
-		
-		@Then("^Menampilkan data table summary by area")
-		public void Menampilkan_data_table_summary_by_area() {
-			assertEquals(configProperties.getM5(), db.getSummary());
-			extentTest.log(LogStatus.PASS, "Menampilkan data table summary by area");
-		}
-		
-		//============================ Master User Activity ==========================
-		@When("^Menampilkan dropdown menu master")
-		public void Menampilkan_dropdown_menu_master(){
-			user.gotoMaster();
-			extentTest.log(LogStatus.PASS, "Menampilkan dropdown menu master");
-		}
-		
-		@When("^Menampilkan data table user")
-		public void Menampilkan_data_table_user() {
-			user.gotoUser();
-			extentTest.log(LogStatus.PASS, "Menampilkan data table user");
-		}
-		
-		
-		@When("^Menampilkan form tambah data user")
-		public void Menampilkan_form_tambah_data_user() {
-			user.clickBtnAdd();
-			extentTest.log(LogStatus.PASS, "Menampilkan form tambah data user");
-		}
-		
-		@When("^Mengisi NIK")
-		public void Mengisi_NIK() {
-			user.inputNik(configProperties.getNik());
-			extentTest.log(LogStatus.PASS, "Mengisi NIK");
-		}
-		
-		@When("^Mengisi nama")
-		public void Mengisi_nama() {
-			user.inputName(configProperties.getName());
-			extentTest.log(LogStatus.PASS, "Mengisi nama");
-		}
-		
-		@When("^Mengisi username user")
-		public void UMengisi_username() {
-			user.inputUsername(configProperties.getUsernameU());
-			extentTest.log(LogStatus.PASS, "Mengisi username");
-		}
-		
-		@When("^Mengisi password user")
-		public void UMengisi_Password() {
-			user.inputPassword(configProperties.getPasswordU());
-			extentTest.log(LogStatus.PASS, "Mengisi Password");
-		}
-		
-		@When("^Privilege")
-		public void privilege() {
-			user.dropdwonPrivilege(configProperties.getPrivilege());
-			extentTest.log(LogStatus.PASS, "Privilege");
-		}
-		
-		@Then("^Menambahkan data")
-		public void Menambahkan_data() {
-			user.clickBtnSave();
-			extentTest.log(LogStatus.PASS, "Menambahkan data");
-		}
-		
-		//============================ Master Kota Activity ==========================
-		@When("^Menampilkan data kota")
-		public void Menampilkan_data_kota() {
-			kota.clickGotoKota();
-			extentTest.log(LogStatus.PASS, "Menampilkan data kota");
-		}
-		
-		@When("^Menampilkan form data kota")
-		public void Menampilkan_form_data_kota() {
-			kota.clickBtnAddKota();
-			extentTest.log(LogStatus.PASS, "Menampilkan form data kota");
-		}
-		
-		@When("^Mengisi nama kota")
-		public void Mengisi_nama_kota() {
-			kota.inputKota(configProperties.getKota2());
-			extentTest.log(LogStatus.PASS, "Mengisi nama kota");
-		}
-		
-		@Then("^Menambahkan data kota")
-		public void Menambahkan_data_kota() {
-			kota.clickSaveKota();
-			extentTest.log(LogStatus.PASS, "Menambahkan data");
-		}
-		
-		//============================ Master area activity ==========================
-		@When("^Menampilkan data area")
-		public void Menampilkan_data_area() {
-			area.clickArea();
-			extentTest.log(LogStatus.PASS, "Menampilkan data area");
-		}
-		
-		@When("^Menampilkan form data area")
-		public void Menampilkan_form_data_area() {
-			area.clickBtnAdd();
-			extentTest.log(LogStatus.PASS, "Menampilkan form data area");
-		}
-		
-		@When("^Mengisi nama area")
-		public void Mengisi_nama_area() {
-			area.inputArea(configProperties.getArea2());
-			extentTest.log(LogStatus.PASS, "Mengisi nama area");
-		}
-		
-		@Then("^Menambahkan data area")
-		public void Menambahkan_data_area() {
-			area.clickSave();
-			extentTest.log(LogStatus.PASS, "Menambahkan data");
-		}
+
+	// ============================ Dashboard Activity ============================
+	@When("^Menuju halaman dashboard")
+	public void Menuju_halaman_dashboard() {
+		db.gotoDashboardPage();
+		extentTest.log(LogStatus.PASS, "Menuju halaman dashboard");
+	}
+
+	@When("^Menampilkan jumlah monthly visit")
+	public void Menampilkan_jumlah_monthly_visit() {
+		assertEquals(configProperties.getM1(), db.getMonthly());
+		extentTest.log(LogStatus.PASS, "Menampilkan jumlah monthly visit");
+	}
+
+	@When("^Menampilkan jumlah unvisit")
+	public void Menampilkan_jumlah_unvisit() {
+		assertEquals(configProperties.getM2(), db.getUnvisit());
+		extentTest.log(LogStatus.PASS, "Menampilkan jumlah unvisit");
+	}
+
+	@When("^Menampilkan jumlah monthly price")
+	public void Menampilkan_jumlah_monthly_price() {
+		assertEquals(configProperties.getM3(), db.getMonthlyPrice());
+		extentTest.log(LogStatus.PASS, "Menampilkan jumlah monthly price");
+	}
+
+	@When("^Menampilkan jumlah total price")
+	public void Menampilkan_jumlah_total_price() {
+		assertEquals(configProperties.getM4(), db.getTotalPrice());
+		extentTest.log(LogStatus.PASS, "Menampilkan jumlah total price");
+	}
+
+	@Then("^Menampilkan data table summary by area")
+	public void Menampilkan_data_table_summary_by_area() {
+		assertEquals(configProperties.getM5(), db.getSummary());
+		extentTest.log(LogStatus.PASS, "Menampilkan data table summary by area");
+	}
+
+	// ============================ Master User Activity ==========================
+	@When("^Menampilkan dropdown menu master")
+	public void Menampilkan_dropdown_menu_master() {
+		user.gotoMaster();
+		extentTest.log(LogStatus.PASS, "Menampilkan dropdown menu master");
+	}
+
+	@When("^Menampilkan data table user")
+	public void Menampilkan_data_table_user() {
+		user.gotoUser();
+		extentTest.log(LogStatus.PASS, "Menampilkan data table user");
+	}
+
+	@When("^Menampilkan form tambah data user")
+	public void Menampilkan_form_tambah_data_user() {
+		user.clickBtnAdd();
+		extentTest.log(LogStatus.PASS, "Menampilkan form tambah data user");
+	}
+
+	@When("^Mengisi NIK")
+	public void Mengisi_NIK() {
+		user.inputNik(configProperties.getNik());
+		extentTest.log(LogStatus.PASS, "Mengisi NIK");
+	}
+
+	@When("^Mengisi nama")
+	public void Mengisi_nama() {
+		user.inputName(configProperties.getName());
+		extentTest.log(LogStatus.PASS, "Mengisi nama");
+	}
+
+	@When("^Mengisi username user")
+	public void UMengisi_username() {
+		user.inputUsername(configProperties.getUsernameU());
+		extentTest.log(LogStatus.PASS, "Mengisi username");
+	}
+
+	@When("^Mengisi password user")
+	public void UMengisi_Password() {
+		user.inputPassword(configProperties.getPasswordU());
+		extentTest.log(LogStatus.PASS, "Mengisi Password");
+	}
+
+	@When("^Privilege")
+	public void privilege() {
+		user.dropdwonPrivilege(configProperties.getPrivilege());
+		extentTest.log(LogStatus.PASS, "Privilege");
+	}
+
+	@Then("^Menambahkan data")
+	public void Menambahkan_data() {
+		user.clickBtnSave();
+		extentTest.log(LogStatus.PASS, "Menambahkan data");
+	}
+
+	// ============================ Master Kota Activity ==========================
+	@When("^Menampilkan data kota")
+	public void Menampilkan_data_kota() {
+		kota.clickGotoKota();
+		extentTest.log(LogStatus.PASS, "Menampilkan data kota");
+	}
+
+	@When("^Menampilkan form data kota")
+	public void Menampilkan_form_data_kota() {
+		kota.clickBtnAddKota();
+		extentTest.log(LogStatus.PASS, "Menampilkan form data kota");
+	}
+
+	@When("^Mengisi nama kota")
+	public void Mengisi_nama_kota() {
+		kota.inputKota(configProperties.getKota2());
+		extentTest.log(LogStatus.PASS, "Mengisi nama kota");
+	}
+
+	@Then("^Menambahkan data kota")
+	public void Menambahkan_data_kota() {
+		kota.clickSaveKota();
+		extentTest.log(LogStatus.PASS, "Menambahkan data");
+	}
+
+	// ============================ Master area activity ==========================
+	@When("^Menampilkan data area")
+	public void Menampilkan_data_area() {
+		area.clickArea();
+		extentTest.log(LogStatus.PASS, "Menampilkan data area");
+	}
+
+	@When("^Menampilkan form data area")
+	public void Menampilkan_form_data_area() {
+		area.clickBtnAdd();
+		extentTest.log(LogStatus.PASS, "Menampilkan form data area");
+	}
+
+	@When("^Mengisi nama area")
+	public void Mengisi_nama_area() {
+		area.inputArea(configProperties.getArea2());
+		extentTest.log(LogStatus.PASS, "Mengisi nama area");
+	}
+
+	@Then("^Menambahkan data area")
+	public void Menambahkan_data_area() {
+		area.clickSave();
+		extentTest.log(LogStatus.PASS, "Menambahkan data");
+	}
 
 	// ============================Report Activity=================================
-
+	
 	@When("^Menampilkan menu reporting")
 	public void toReport() {
 		reportPage.toReport();
@@ -329,7 +323,7 @@ public class StepDefinition {
 
 	@When("^Mencari data newdata")
 	public void findData() {
-		worklistPage.searchItem("sate");
+		worklistPage.searchItem(configProperties.getSrcItemWorklist());
 		extentTest.log(LogStatus.PASS, "Mencari data newdata");
 	}
 
@@ -365,13 +359,13 @@ public class StepDefinition {
 
 	@When("^Mengisi MID")
 	public void fillMID() {
-		visitPage.fillMID("MK2221I");
+		visitPage.fillMID(configProperties.getMid());
 		extentTest.log(LogStatus.PASS, "Mengisi MID");
 	}
 
 	@When("^Mengisi TID")
 	public void fillTID() {
-		visitPage.fillTID("CD5231X");
+		visitPage.fillTID(configProperties.getTid());
 		extentTest.log(LogStatus.PASS, "Mengisi TID");
 	}
 
@@ -383,7 +377,7 @@ public class StepDefinition {
 
 	@When("^Upload foto")
 	public void uploadValid() {
-		visitPage.chooseFile("C:\\Users\\Lenovo\\Downloads\\Background JC.jpg");
+		visitPage.chooseFile(configProperties.getLocationphoto());
 		extentTest.log(LogStatus.PASS, "Upload foto");
 	}
 
@@ -499,7 +493,7 @@ public class StepDefinition {
 
 	@When("^Memilih dari drop down list Jika pilih Others akan muncul kolom tambahan")
 	public void chooseStatus() {
-		otherPage.chooseOptions("Test");
+		otherPage.chooseOptions(configProperties.getChooseoption());
 		extentTest.log(LogStatus.PASS, "Memilih dari drop down list Jika pilih Others akan muncul kolom tambahan");
 
 	}
@@ -551,49 +545,49 @@ public class StepDefinition {
 
 	@When("^Mengisi Name Merchant")
 	public void fillNewName() {
-		addPage.fillName("Test Merchant");
+		addPage.fillName(configProperties.getFillname());
 		extentTest.log(LogStatus.PASS, "Mengisi Name Merchant");
 
 	}
 
 	@When("^Mengisi Address")
 	public void fillNewAddress() {
-		addPage.fillAddress("Test Address");
+		addPage.fillAddress(configProperties.getFilladdress());
 		extentTest.log(LogStatus.PASS, "Mengisi Address");
 
 	}
 
 	@When("^Mengisi Address By Floor")
 	public void fillFloorLoc() {
-		addPage.fillAddrFloor("1");
+		addPage.fillAddrFloor(configProperties.getFillfloor());
 		extentTest.log(LogStatus.PASS, "Mengisi Address By Floor");
 
 	}
 
 	@When("^Mengisi category")
 	public void fillCategory() {
-		addPage.fillCategory("FnB");
+		addPage.fillCategory(configProperties.getFillcategory());
 		extentTest.log(LogStatus.PASS, "Mengisi category");
 
 	}
 
 	@When("^Mengisi PIC")
 	public void fillPIC() {
-		addPage.fillPIC("User");
+		addPage.fillPIC(configProperties.getFillpic());
 		extentTest.log(LogStatus.PASS, "Mengisi PIC");
 
 	}
 
 	@When("^Mengisi No Telp PIC")
 	public void fillPhoneNum() {
-		addPage.fillPhone("8888888888");
+		addPage.fillPhone(configProperties.getFillphone());
 		extentTest.log(LogStatus.PASS, "Mengisi No Telp PIC");
 
 	}
 
 	@When("^Memilih dari drop down list PIC Position dan pilih Others akan muncul kolom tambahan")
 	public void chooseOtherPosition() {
-		addPage.choosePosition("Test other position");
+		addPage.choosePosition(configProperties.getChooseposition());
 		extentTest.log(LogStatus.PASS,
 				"Memilih dari drop down list PIC Position dan pilih Others akan muncul kolom tambahan");
 
@@ -601,7 +595,7 @@ public class StepDefinition {
 
 	@When("^Memilih dari drop down list Merchant Acceptance dan pilih Others akan muncul kolom tambahan")
 	public void chooseOtherAcceptance() {
-		addPage.chooseAcceptCard("Other Test Accp");
+		addPage.chooseAcceptCard(configProperties.getChooseaccp());
 		extentTest.log(LogStatus.PASS,
 				"Memilih dari drop down list Merchant Acceptance dan pilih Others akan muncul kolom tambahan");
 
@@ -609,7 +603,7 @@ public class StepDefinition {
 
 	@When("^Memilih dari drop down list Bussiness issue dan pilih Others akan muncul kolom tambahan")
 	public void chooseOtherIssue() {
-		addPage.chooseIssue("New Issue");
+		addPage.chooseIssue(configProperties.getChooseissue());
 		extentTest.log(LogStatus.PASS,
 				"Memilih dari drop down list Bussiness issue dan pilih Others akan muncul kolom tambahan");
 
@@ -627,7 +621,7 @@ public class StepDefinition {
 	public void cancelCreateMerchant() {
 		worklistPage.toWorklist();
 		worklistPage.toAddNewData();
-		addPage.fillPhone("0988778899");
+		addPage.fillPhone(configProperties.getFillphone());
 		addPage.cancelForm();
 		extentTest.log(LogStatus.PASS, "tidak Simpan New Merchant data");
 

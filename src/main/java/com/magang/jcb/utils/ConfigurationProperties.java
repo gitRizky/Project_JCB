@@ -10,6 +10,56 @@ public class ConfigurationProperties {
 	@Value("${browser}")
 	private String browser;
 	
+	@Value("${locationphoto}")
+	private String locationphoto;
+	
+	public String getLocationphoto() {
+		return locationphoto;
+	}
+	
+	@Value("${srcItemWorklist}")
+	private String srcItemWorklist;
+
+	public String getSrcItemWorklist() {
+		return srcItemWorklist;
+	}
+	
+	@Value("${mid}")
+	private String mid;
+	
+	@Value("${tid}")
+	private String tid;
+	
+	@Value("${chooseoption}")
+	private String chooseoption;
+	
+	@Value("${fillname}")
+	private String fillname;
+	
+	@Value("${filladdress}")
+	private String filladdress;
+	
+	@Value("${fillfloor}")
+	private String fillfloor;
+
+	@Value("${fillcategory}")
+	private String fillcategory;
+	
+	@Value("${fillpic}")
+	private String fillpic;
+	
+	@Value("${fillphone}")
+	private String fillphone;
+	
+	@Value("${chooseposition}")
+	private String chooseposition;
+	
+	@Value("${chooseaccp}")
+	private String chooseaccp;
+	
+	@Value("${chooseissue}")
+	private String chooseissue;
+	
 	@Value("${myusername}")
 	private String username;
 	
@@ -34,6 +84,54 @@ public class ConfigurationProperties {
 	@Value("${m5}")
 	private String m5;
 	
+	public String getMid() {
+		return mid;
+	}
+
+	public String getTid() {
+		return tid;
+	}
+
+	public String getChooseoption() {
+		return chooseoption;
+	}
+
+	public String getFillname() {
+		return fillname;
+	}
+
+	public String getFilladdress() {
+		return filladdress;
+	}
+
+	public String getFillfloor() {
+		return fillfloor;
+	}
+
+	public String getFillcategory() {
+		return fillcategory;
+	}
+
+	public String getFillpic() {
+		return fillpic;
+	}
+
+	public String getFillphone() {
+		return fillphone;
+	}
+
+	public String getChooseposition() {
+		return chooseposition;
+	}
+
+	public String getChooseaccp() {
+		return chooseaccp;
+	}
+
+	public String getChooseissue() {
+		return chooseissue;
+	}
+
 	@Value("${nik}")
 	private String nik;
 	
