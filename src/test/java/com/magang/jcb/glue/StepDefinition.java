@@ -13,6 +13,7 @@ import com.magang.jcb.drivers.DriverSingleton;
 import com.magang.jcb.pages.CompletedPage;
 import com.magang.jcb.pages.DashboardPages;
 import com.magang.jcb.pages.LoginPages;
+import com.magang.jcb.pages.LoginSurveyorPages;
 import com.magang.jcb.pages.MasterAreaPages;
 import com.magang.jcb.pages.MasterKotaPages;
 import com.magang.jcb.pages.MasterUserPages;
@@ -47,6 +48,7 @@ public class StepDefinition {
 	private MasterKotaPages kota;
 	private MasterAreaPages area;
 	private ReportPage reportPage;
+	private LoginSurveyorPages ls;
 	private CompletedPage completedPage;
 	WorklistPage worklistPage;
 	VisitPage visitPage;
@@ -64,7 +66,12 @@ public class StepDefinition {
 		DriverSingleton.getInstance(configProperties.getBrowser());
 		driver = DriverSingleton.getDriver();
 		login = new LoginPages();
+		db = new DashboardPages();
+		user = new MasterUserPages();
+		kota = new MasterKotaPages();
+		area = new MasterAreaPages();
 		reportPage = new ReportPage();
+		ls = new LoginSurveyorPages();
 		completedPage = new CompletedPage();
 		worklistPage = new WorklistPage();
 		visitPage = new VisitPage();
@@ -75,7 +82,7 @@ public class StepDefinition {
 		Utility.testCount++;
 	}
 
-	// ============================ Login Activity=====================================
+	// ============================ Login Admin Activity=====================================
 
 	@Given("^Menampilkan form login")
 	public void Menampilkan_form_login() {
@@ -290,15 +297,48 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS, "Unduh template laporan");
 
 	}
-
+	
+	//============================= Login Surveyor activity =====================
+	@When("^logout akun administrator")
+	public void logout_akun_administrator() {
+		ls.logout();
+		extentTest.log(LogStatus.PASS, "logout akun administrator");
+	}
+	
+	@When("^Menampilkan form login surveyor")
+	public void Menampilkan_form_login_surveyor() {
+		assertEquals(configProperties.getTxtLogin(), ls.getTxtLogin());
+		extentTest.log(LogStatus.PASS, "Menampilkan form login surveyor");
+	}
+	
+	@When("^Mengisi username surveyor")
+	public void Mengisi_username_surveyor() {
+		ls.inputUsernameS(configProperties.getSurveyor());
+		extentTest.log(LogStatus.PASS, "Mengisi username surveyor");
+	}
+	
+	@When("^Mengisi password surveyor")
+	public void Mengisi_password_surveyor() {
+		ls.inputPasswordS(configProperties.getPassword());
+		extentTest.log(LogStatus.PASS, "Mengisi password surveyor");
+	}
+	
+	@When("^Login ke sistem JCB surveyor")
+	public void Login_ke_sistem_JCB_surveyor() {
+		ls.clickButtonLoginS();
+		extentTest.log(LogStatus.PASS, "Login ke sistem JCB surveyor");
+	}
+	
+	@When("^Muncul pesan selamat datang user")
+	public void Muncul_pesan_selamat_datang_user() {
+		assertEquals(configProperties.getMessageSurveyor(), ls.getMessageTextS());
+		extentTest.log(LogStatus.PASS, "Muncul pesan selamat datang user");
+	}
+	
+	
 	// ============================Worklist Activity=============================
-
 	@When("^Menampilkan submenu")
 	public void submenuWorklist() {
-		reportPage.logout();
-		login.inputUsername(configProperties.getSurveyor());
-		login.inputPassword(configProperties.getPassword());
-		login.clickButtonLogin();
 		worklistPage.toWorklist();
 		extentTest.log(LogStatus.PASS, "Menampilkan submenu");
 	}

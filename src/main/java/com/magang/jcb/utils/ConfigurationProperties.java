@@ -171,6 +171,20 @@ public class ConfigurationProperties {
 	@Value("${searchKeyCompleted}")
 	private String searchKeyCompleted;
 	
+	@Value("${messageSurveyor}")
+	private String messageSurveyor;
+	
+	public String getMessageSurveyor() {
+		return messageSurveyor;
+	}
+	
+	@Value("${txtLogin}")
+	private String txtLogin;
+	
+	public String getTxtLogin() {
+		return txtLogin;
+	}
+	
 	public String getSearchKeyCompleted() {
 		return searchKeyCompleted;
 	}
