@@ -5,5 +5,11 @@ Feature: Dashboard activity
 	And Menampilkan jumlah unvisit
 	And Menampilkan jumlah monthly price
 	And Menampilkan jumlah total price
-	Then Menampilkan data table summary by area
+	And Menampilkan data table summary by area
+	And Menampilkan data area dashboard
+	And Menampilkan data jumlah merchant
+	And Menampilkan data jumlah visit
+	And Menampilkan data jumlah unvisit
+	And Menampilkan data jumlah total price
+	Then Menampilkan grand total
 	

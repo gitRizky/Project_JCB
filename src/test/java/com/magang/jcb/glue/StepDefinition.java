@@ -147,10 +147,46 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS, "Menampilkan jumlah total price");
 	}
 
-	@Then("^Menampilkan data table summary by area")
+	@When("^Menampilkan data table summary by area")
 	public void Menampilkan_data_table_summary_by_area() {
 		assertEquals(configProperties.getM5(), db.getSummary());
 		extentTest.log(LogStatus.PASS, "Menampilkan data table summary by area");
+	}
+	
+	@When("^Menampilkan data area dashboard")
+	public void Menampilkan_data_area_dashboard() {
+		assertEquals(configProperties.getArea(), db.getTxtAreaD());
+		extentTest.log(LogStatus.PASS, "Menampilkan data area dashboard");
+	}
+	
+	@When("^Menampilkan data jumlah merchant")
+	public void Menampilkan_data_jumlah_merchant() {
+		assertEquals(configProperties.getMerchant(), db.getTxtMerchantD());
+		extentTest.log(LogStatus.PASS, "Menampilkan data jumlah merchant");
+	}
+	
+	@When("^Menampilkan data jumlah visit")
+	public void Menampilkan_data_jumlah_visit() {
+		assertEquals(configProperties.getVisit(), db.getTxtVisitD());
+		extentTest.log(LogStatus.PASS, "Menampilkan data jumlah visit");
+	}
+	
+	@When("^Menampilkan data jumlah unvisit")
+	public void Menampilkan_data_jumlah_unvisit() {
+		assertEquals(configProperties.getUnvisit(), db.getTxtUnvisitD());
+		extentTest.log(LogStatus.PASS, "Menampikan data jumlah unvisit");
+	}
+	
+	@When("^Menampilkan data jumlah total price")
+	public void Menampilkan_data_jumlah_total_price() {
+		assertEquals(configProperties.getPrice(), db.getTxtTotalPriceD());
+		extentTest.log(LogStatus.PASS, "Menampilkan data jumlah total price");
+	}
+	
+	@Then("^Menampilkan grand total")
+	public void Menampilkan_grand_total() {
+		assertEquals(configProperties.getGrand(), db.getTxtGrandTotal());
+		extentTest.log(LogStatus.PASS, "Menampilkan grand total");
 	}
 
 	// ============================ Master User Activity ==========================

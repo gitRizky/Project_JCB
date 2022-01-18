@@ -56,4 +56,46 @@ public class DashboardPages {
 	public String getSummary() {
 		return txtSummaryByArea.getText();
 	}
+	
+	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(1) > td:nth-child(1)")
+	private WebElement txtAreaD;
+	
+	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(1) > td:nth-child(2)")
+	private WebElement txtMerchantD;
+	
+	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(1) > td:nth-child(3)")
+	private WebElement txtVisitD;
+	
+	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(1) > td:nth-child(4)")
+	private WebElement txtUnvisitD;
+	
+	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(1) > td:nth-child(5)")
+	private WebElement txtTotalPriceD;
+	
+	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(21)")
+	private WebElement txtGrandTotal;
+	
+	public String getTxtAreaD() {
+		return txtAreaD.getText();
+	}
+	
+	public String getTxtMerchantD() {
+		return txtMerchantD.getText();
+	}
+	
+	public String getTxtVisitD() {
+		return txtVisitD.getText();
+	}
+	
+	public String getTxtUnvisitD() {
+		return txtUnvisitD.getText();
+	}
+	
+	public String getTxtTotalPriceD() {
+		return txtTotalPriceD.getText();
+	}
+	
+	public String getTxtGrandTotal() {
+		return txtGrandTotal.getText();
+	}
 }

@@ -272,4 +272,46 @@ public class ConfigurationProperties {
 	public String getArea2() {
 		return area2;
 	}
+	
+	@Value("${area}")
+	private String area;
+	
+	@Value("${merchant}")
+	private String merchant;
+	
+	@Value("${visit}")
+	private String visit;
+	
+	@Value("${unvisit}")
+	private String unvisit;
+	
+	@Value("${price}")
+	private String price;
+	
+	@Value("${grand}")
+	private String grand;
+	
+	public String getArea() {
+		return area;
+	}
+	
+	public String getMerchant() {
+		return merchant;
+	}
+	
+	public String getVisit() {
+		return visit;
+	}
+	
+	public String getUnvisit() {
+		return unvisit;
+	}
+	
+	public String getPrice() {
+		return price;
+	}
+	
+	public String getGrand() {
+		return grand;
+	}
 }
