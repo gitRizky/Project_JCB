@@ -72,7 +72,7 @@ public class DashboardPages {
 	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(1) > td:nth-child(5)")
 	private WebElement txtTotalPriceD;
 	
-	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(21)")
+	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(26) > td:nth-child(5)")
 	private WebElement txtGrandTotal;
 	
 	public String getTxtAreaD() {

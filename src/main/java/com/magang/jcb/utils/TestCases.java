@@ -7,6 +7,8 @@ public enum TestCases {
 	T3("Input data user"),
 	T4("Input data kota"),
 	T5("Input data area"),
+	T6("Modul Bucket Validasi"),
+	T7("Modul Monitoring"),
 	T8("Modul Login Surveyor"),
 	T9("Modul Report"),
 	T10("Modul Worklist Part 1"),

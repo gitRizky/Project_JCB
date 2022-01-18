@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.magang.jcb.configs.AutomationFrameworkConfigJava;
 import com.magang.jcb.drivers.DriverSingleton;
+import com.magang.jcb.pages.BucketValidasi;
 import com.magang.jcb.pages.CompletedPage;
 import com.magang.jcb.pages.DashboardPages;
 import com.magang.jcb.pages.LoginPages;
@@ -17,6 +18,7 @@ import com.magang.jcb.pages.LoginSurveyorPages;
 import com.magang.jcb.pages.MasterAreaPages;
 import com.magang.jcb.pages.MasterKotaPages;
 import com.magang.jcb.pages.MasterUserPages;
+import com.magang.jcb.pages.Monitoring;
 import com.magang.jcb.pages.ReportPage;
 import com.magang.jcb.pages.VisitOtherPage;
 import com.magang.jcb.pages.VisitPage;
@@ -47,6 +49,8 @@ public class StepDefinition {
 	private MasterUserPages user;
 	private MasterKotaPages kota;
 	private MasterAreaPages area;
+	private BucketValidasi validasi;
+	private Monitoring monitoring;
 	private ReportPage reportPage;
 	private LoginSurveyorPages ls;
 	private CompletedPage completedPage;
@@ -70,6 +74,8 @@ public class StepDefinition {
 		user = new MasterUserPages();
 		kota = new MasterKotaPages();
 		area = new MasterAreaPages();
+		validasi = new BucketValidasi();
+		monitoring = new Monitoring();
 		reportPage = new ReportPage();
 		ls = new LoginSurveyorPages();
 		completedPage = new CompletedPage();
@@ -294,6 +300,220 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS, "Menambahkan data");
 	}
 
+	//============================ Bucket Validasi ================================
+	@When("^Menampilkan Data Validation")
+	public void Menampilkan_Data_Validation() {
+		validasi.bucketValidasi();
+		extentTest.log(LogStatus.PASS,"Menampilkan Data Validation");
+	}
+		
+	@When("^Drop down list yang berisi nama area")
+	public void Drop_down_list_yang_berisi_nama_area() {
+		validasi.FilterArea();
+		extentTest.log(LogStatus.PASS,"Drop down list yang berisi nama area");
+	}
+		
+	@When("^Menampilkan filter data berdasarkan nama area")
+	public void Menampilkan_filter_data_berdasarkan_nama_area() {
+		validasi.BtnFilter();
+		extentTest.log(LogStatus.PASS,"Menampilkan filter data berdasarkan nama area");
+	}
+		
+	@When("^Mencari Data merchant name")
+	public void Mencari_Data_merchant_name() {
+		validasi.Search(configProperties.getSearch1());
+		extentTest.log(LogStatus.PASS,"Mencari Data merchant name");
+	}
+	
+	@When("^Menampilkan Detail Visit")
+	public void Menampilkan_Detail_Visit() {
+		validasi.View();
+		extentTest.log(LogStatus.PASS,"Menampilkan Detail Visit");
+	}
+		
+	@When("^Menampilkan Pop up Validate form")
+	public void Menampilkan_Pop_up_Validate_form() {
+		validasi.Validate();
+		extentTest.log(LogStatus.PASS,"Menampilkan Pop up Validate form");
+	}
+		
+//	@When("^Menyimpan data validate")
+//	public void Menyimpan_data_validate() {
+//		validasi.SubmitValidate();
+//		extentTest.log(LogStatus.PASS,"Menyimpan data validate");
+//	}
+		
+	@When("^Tidak menyimpan data validate")
+	public void Tidak_menyimpan_data_validate() {
+		validasi.CancelValidate();
+		extentTest.log(LogStatus.PASS,"Tidak menyimpan data validate");
+	}
+		
+		
+//	@When("^Menampilkan Pop up return form")
+//	public void Menampilkan_Pop_up_return_form() {
+//		validasi.Return();
+//		extentTest.log(LogStatus.PASS,"Menampilkan Pop up return form");
+//	}
+		
+//	@When("^Mengisi Note return")
+//	public void Mengisi_Note_return() {
+//		validasi.NotesReturn(configProperties.getNotesreturn());
+//		extentTest.log(LogStatus.PASS,"Mengisi Note return");
+//	}
+		
+//	@When("^Menyimpan data return")
+//	public void Menyimpan_data_return() {
+//		validasi.SubmitReturn();
+//		extentTest.log(LogStatus.PASS,"Menyimpan data return");
+//	}
+		
+//	@When("^Tidak menyimpan data return")
+//	public void Tidak_menyimpan_data_return() {
+//		validasi.CancelReturn();
+//		extentTest.log(LogStatus.PASS,"Tidak menyimpan data return");
+//	}
+		
+		
+//	@When("^Menampilkan Pop up reject form")
+//	public void Menampilkan_Pop_up_rejectform() {
+//		validasi.Reject();
+//		extentTest.log(LogStatus.PASS,"Menampilkan Pop up reject form");
+//	}
+		
+//	@When("^Mengisi Note reject")
+//	public void Mengisi_Note_reject() {
+//		validasi.NotesReject(configProperties.getNotesreject());
+//		extentTest.log(LogStatus.PASS,"Mengisi Note reject");
+//	}
+		
+//	@When("^Menyimpan data reject")
+//	public void Menyimpan_data_reject() {
+//		validasi.SubmitReject();
+//		extentTest.log(LogStatus.PASS,"Menyimpan data reject");
+//	}
+		
+//	@When("^Tidak menyimpan data reject")
+//	public void Tidak_menyimpan_data_reject() {
+//		validasi.CancelReject();
+//		extentTest.log(LogStatus.PASS,"Tidak menyimpan data reject");
+//	}
+	
+	//============================ Monitoring =====================================	
+	@When("^Menampilkan Monitoring")
+	public void Menampilkan_Monitoring() {
+		monitoring.PageMonitoring();
+		extentTest.log(LogStatus.PASS,"Menampilkan Monitoring");
+	}
+	
+	@When("^Drop down list yang berisi angka")
+	public void Drop_down_list_yang_berisi_angka() {
+		monitoring.showEntries1();
+		extentTest.log(LogStatus.PASS,"Drop down list yang berisi angka");
+	}
+	
+	@When("^Mengurutkan baris angka pada kolom No")
+	public void Mengurutkan_baris_angka_pada_kolom_No() {
+		monitoring.No();
+		extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No");
+	}
+	
+	@When("^Mengurutkan baris pada kolom nama")
+	public void Mengurutkan_baris_pada_kolom_nama() {
+		monitoring.Name();
+		extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom nama");
+	}
+	
+	@When("^Mengurutkan baris pada kolom total data")
+	public void Mengurutkan_baris_pada_kolom_total_data() {
+		monitoring.TotalData();
+		extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom total data");
+	}
+	
+	@When("^Mengurutkan baris pada kolom total visit")
+	public void Mengurutkan_baris_pada_kolom_total_visit() {
+		monitoring.TotalVisit();
+		extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom total visit");
+	}
+	
+	@When("^Mencari Data Nama")
+	public void Mencari_Data_Nama() {
+		monitoring.txtSearch1(configProperties.getSearch2());
+		extentTest.log(LogStatus.PASS,"Mencari Data Nama");
+	}
+	
+	@When("^Menampilkan Data Monitoring Visit")
+	public void Menampilkan_Data_Monitoring_Visit() {
+		monitoring.Detail();
+		extentTest.log(LogStatus.PASS,"Menampilkan Data Monitoring Visit");
+	}
+	
+	@When("^Mengisi tahun dan bulan")
+	public void Mengisi_tahun_dan_bulan() {
+		monitoring.Period();
+		extentTest.log(LogStatus.PASS,"Mengisi tahun dan bulan");
+	}
+	
+	@When("^Menampilkan filter data berdasarkan tahun dan bulan")
+	public void Menampilkan_filter_data_berdasarkan_tahun_dan_bulan() {
+		monitoring.Filter();
+		extentTest.log(LogStatus.PASS,"Menampilkan filter data berdasarkan tahun dan bulan");
+	}
+	
+	@When("^Drop down list yang berisi angka untuk tabel")
+	public void Drop_down_list_yang_berisi_angka_untuk_tabel() {
+		monitoring.showEntries2();
+		extentTest.log(LogStatus.PASS,"Drop down list yang berisi angka untuk tabel");
+	}
+	
+	@When("^Pindah ke halaman selanjutnya")
+	public void Pindah_ke_halaman_selanjutnya() {
+		monitoring.PageButton();
+		extentTest.log(LogStatus.PASS,"Pindah ke halaman selanjutnya");
+	}
+	
+	@When("^Mencari Data Master Merchant")
+	public void Mencari_Data_Master_Merchant() {
+		monitoring.txtSearch2(configProperties.getSearch3());
+		extentTest.log(LogStatus.PASS,"Mencari Data Master Merchant");
+	}
+	
+	@When("^Menampilkan View Image")
+	public void Menampilkan_View_Image() {
+		monitoring.ViewImage();
+		extentTest.log(LogStatus.PASS,"Mencari Data Nama");
+	}
+	
+	@When("^Menampilkan View EDC")
+	public void Menampilkan_View_EDC() {
+		monitoring.ViewEDC1();
+		extentTest.log(LogStatus.PASS,"Menampilkan View EDC");
+	}
+	
+	@When("^Menampilkan merchant issue sesuai dengan tahun dan bulan")
+	public void Menampilkan_merchant_issue_sesuai_dengan_tahun_dan_bulan() {
+		monitoring.merchantIssue();
+		extentTest.log(LogStatus.PASS,"Menampilkan merchant issue sesuai dengan tahun dan bulan");
+	}
+	
+	@When("^Drop down list yang berisi angka untuk tabel Merchant Issue")
+	public void Drop_down_list_yang_berisi_angka_untuk_tabel_Merchant_Issue() {
+		monitoring.showEntries3();
+		extentTest.log(LogStatus.PASS,"Drop down list yang berisi angka untuk tabel Merchant Issue");
+	}
+	
+	@When("^Mencari Data Merchant Issue")
+	public void Mencari_Data_Merchant_Issue() {
+		monitoring.txtSearch3(configProperties.getSearch4());
+		extentTest.log(LogStatus.PASS,"Mencari Data Merchant Issue");
+	}
+	
+	@Then("^Menampilkan View EDC Merchant Issue")
+	public void Menampilkan_View_EDC_Merchant_Issue() {
+		monitoring.ViewEDC2();
+		extentTest.log(LogStatus.PASS,"Menampilkan View EDC Merchant Issue");
+	}	
+	
 	// ============================Report Activity=================================
 	
 	@When("^Menampilkan menu reporting")
