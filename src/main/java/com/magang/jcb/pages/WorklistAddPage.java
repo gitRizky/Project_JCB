@@ -136,25 +136,25 @@ public class WorklistAddPage {
 	
 	public void chooseAcceptCard(String string) {
 		merchant_accept_jcb_card.click();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 1; i++) {
 			merchant_accept_jcb_card.sendKeys(Keys.DOWN);
 		}
 		merchant_accept_jcb_card.sendKeys(Keys.ENTER);
-		waiting();
-		other_jcb.sendKeys(string);
+//		waiting();
+//		other_jcb.sendKeys(string);
 
 	}
 	
 	public void chooseIssue(String string) {
 		business_issue.click();
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 1; i++) {
 			business_issue.sendKeys(Keys.DOWN);
 		}
 		business_issue.sendKeys(Keys.ENTER);
 		Actions act = new Actions(driver);
 		act.sendKeys(Keys.PAGE_DOWN).perform();
-		waiting();
-		other_issue.sendKeys(string);
+//		waiting();
+//		other_issue.sendKeys(string);
 
 	}
 	

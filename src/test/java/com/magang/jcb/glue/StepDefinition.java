@@ -591,8 +591,7 @@ public class StepDefinition {
 		assertEquals(configProperties.getMessageSurveyor(), ls.getMessageTextS());
 		extentTest.log(LogStatus.PASS, "Muncul pesan selamat datang user");
 	}
-	
-	
+
 	// ============================Worklist Activity=============================
 	@When("^Menampilkan submenu")
 	public void submenuWorklist() {
@@ -630,16 +629,36 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS, "Menampilkan form visit merchant");
 	}
 
+	@When("^Menampilkan data merchant")
+	public void dataMerchantTable() {
+		assertThat(visitPage.getPanelTitleDataMerchant().getText().toLowerCase(), containsString("data merchant"));
+		extentTest.log(LogStatus.PASS, "Menampilkan data merchant");
+	}
+
 	@When("^Menampilkan form update data")
 	public void updateData() {
 		visitPage.editData();
 		extentTest.log(LogStatus.PASS, "Menampilkan form update data");
 	}
 
+	@When("^Menampilkan data merchant yang akan diupdate")
+	public void editViewDataMerchant() {
+		assertThat(visitPage.getModalTitleUpdateData().getText().toLowerCase(), containsString("update"));
+		extentTest.log(LogStatus.PASS, "Menampilkan data merchant yang akan diupdate");
+
+	}
+
 	@When("^Menyimpan perubahan data")
 	public void saveUpdate() {
+		visitPage.saveUpdateData();
 		assertThat(visitPage.successEdit().toLowerCase(), containsString("success"));
 		extentTest.log(LogStatus.PASS, "Menyimpan perubahan data");
+	}
+
+	@When("^Menampilkan data bank")
+	public void tableViewDataBank() {
+		assertThat(visitPage.getPanelTitleDataTerminal().getText().toLowerCase(), containsString("data terminal edc"));
+		extentTest.log(LogStatus.PASS, "Menampilkan data bank");
 	}
 
 	@When("^Menampilkan form add data bank")
@@ -691,6 +710,12 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS, "Tidak menyimpan data");
 	}
 
+	@When("^Menampilkan form Collateral JCB")
+	public void tableViewCollateral() {
+		assertThat(visitPage.getPanelTitleCollateral().getText().toLowerCase(), containsString("collateral"));
+		extentTest.log(LogStatus.PASS, "Menampilkan form Collateral JCB");
+	}
+
 	@When("^Memilih dari drop down list JCB Sticker")
 	public void chooseJCBSticker() {
 		visitPage.chooseColSticker();
@@ -715,6 +740,12 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS, "Memilih dari drop down list JCB Name Card");
 	}
 
+	@When("^Menampilkan form V/M/Amex/CUP")
+	public void tableViewAmex() {
+		assertThat(visitPage.getPanelTitleAmex().getText().toLowerCase(), containsString("amex"));
+		extentTest.log(LogStatus.PASS, "Menampilkan form V/M/Amex/CUP");
+	}
+
 	@When("^Memilih dari drop down list Amex Sticker")
 	public void chooseAmexSticker() {
 		visitPage.chooseASticker();
@@ -731,6 +762,13 @@ public class StepDefinition {
 	public void chooseAmexOpnCls() {
 		visitPage.chooseAOpCls();
 		extentTest.log(LogStatus.PASS, "Memilih dari drop down list Amex Opn/Cls");
+	}
+
+	@When("^Menampilkan form Gimmick")
+	public void tableViewGimmick() {
+		assertThat(visitPage.getPanelTitleGimmick().getText().toLowerCase(), containsString("gimmick"));
+		extentTest.log(LogStatus.PASS, "Menampilkan form Gimmick");
+
 	}
 
 	@When("^Cek Checkbox Bill Holder")
@@ -900,7 +938,7 @@ public class StepDefinition {
 
 	@When("^Memilih dari drop down list Bussiness issue dan pilih Others akan muncul kolom tambahan")
 	public void chooseOtherIssue() {
-		addPage.chooseIssue(configProperties.getChooseissue());
+//		addPage.chooseIssue(configProperties.getChooseissue());
 		extentTest.log(LogStatus.PASS,
 				"Memilih dari drop down list Bussiness issue dan pilih Others akan muncul kolom tambahan");
 

@@ -23,6 +23,24 @@ public class VisitPage {
 	@FindBy(css = "#content > div.row > div:nth-child(2) > form > div.panel.panel-info > div.panel-body > div > a")
 	private WebElement editData;
 
+	@FindBy(xpath = "//*[@id=\"content\"]/div[1]/div[2]/form/div[1]/div[1]/h4")
+	private WebElement panelTitleDataMerchant;
+
+	@FindBy(xpath = "//*[@id=\"modal_form_merchant\"]/div/div/div[1]/h4")
+	private WebElement modalTitleUpdateData;
+
+	@FindBy(xpath = "//*[@id=\"content\"]/div[1]/div[2]/form/div[2]/div[1]/h4")
+	private WebElement panelTitleDataTerminal;
+
+	@FindBy(xpath = "//*[@id=\"collateral\"]/div[1]/h4")
+	private WebElement panelTitleCollateral;
+
+	@FindBy(xpath = "//*[@id=\"amex\"]/div[1]/h4")
+	private WebElement panelTitleAmex;
+
+	@FindBy(xpath = "//*[@id=\"gimmick\"]/div[1]/h4")
+	private WebElement panelTitleGimmick;
+
 	@FindBy(id = "btnSave2")
 	private WebElement btnSave2;
 
@@ -101,6 +119,10 @@ public class VisitPage {
 	public void editData() {
 		this.editData.click();
 		waiting();
+		
+	}
+	
+	public void saveUpdateData() {
 		btnSave2.click();
 		waiting();
 	}
@@ -237,6 +259,30 @@ public class VisitPage {
 
 	public WebElement getSuccessCreateMsg() {
 		return successCreateMsg;
+	}
+	
+	public WebElement getPanelTitleDataMerchant() {
+		return panelTitleDataMerchant;
+	}
+	
+	public WebElement getModalTitleUpdateData() {
+		return modalTitleUpdateData;
+	}
+
+	public WebElement getPanelTitleDataTerminal() {
+		return panelTitleDataTerminal;
+	}
+
+	public WebElement getPanelTitleCollateral() {
+		return panelTitleCollateral;
+	}
+
+	public WebElement getPanelTitleAmex() {
+		return panelTitleAmex;
+	}
+
+	public WebElement getPanelTitleGimmick() {
+		return panelTitleGimmick;
 	}
 
 }
