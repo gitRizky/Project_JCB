@@ -111,7 +111,8 @@ public class StepDefinition {
 
 	@Then("^Muncul pesan selamat datang superadmin2")
 	public void Muncul_pesan_selamat_datang_superadmin2() {
-		assertEquals(configProperties.getMessageLogin(), login.getMessageText());
+//		assertEquals(configProperties.getMessageLogin(), login.getMessageText());
+		assertThat(login.getMessageText(), containsString(configProperties.getMessageLogin()));
 		extentTest.log(LogStatus.PASS, "Muncul pesan selamat datang superadmin2");
 	}
 
