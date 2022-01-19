@@ -526,7 +526,6 @@ public class StepDefinition {
 	@When("^Memilih dari drop down list")
 	public void chooseLstItem() {
 		reportPage.chooseKategori();
-		;
 		extentTest.log(LogStatus.PASS, "Memilih dari drop down list");
 	}
 
@@ -544,7 +543,7 @@ public class StepDefinition {
 
 	@When("^Unduh laporan")
 	public void downloadReport() {
-		reportPage.downloadReport();
+//		reportPage.downloadReport();
 		extentTest.log(LogStatus.PASS, "Unduh laporan");
 	}
 
@@ -554,7 +553,7 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS, "Unduh template laporan");
 
 	}
-	
+
 	//============================= Login Surveyor activity =====================
 	@When("^logout akun administrator")
 	public void logout_akun_administrator() {
@@ -591,7 +590,7 @@ public class StepDefinition {
 		assertEquals(configProperties.getMessageSurveyor(), ls.getMessageTextS());
 		extentTest.log(LogStatus.PASS, "Muncul pesan selamat datang user");
 	}
-
+	
 	// ============================Worklist Activity=============================
 	@When("^Menampilkan submenu")
 	public void submenuWorklist() {
