@@ -16,6 +16,18 @@ public class VisitPage {
 		driver = DriverSingleton.getDriver();
 		PageFactory.initElements(driver, this);
 	}
+	
+	@FindBy(css = "#form_merchant > div > div:nth-child(1) > div > input")
+	private WebElement inputPIC;
+	
+	@FindBy(css = "#form_merchant > div > div:nth-child(2) > div > input")
+	private WebElement inputTelp;
+	
+	@FindBy(css = "#form_merchant > div > div:nth-child(3) > div > select")
+	private WebElement selectPosition;
+	
+	@FindBy(css = "#form_merchant > div > div:nth-child(4) > div > select")
+	private WebElement selectAccpCard;
 
 	@FindBy(css = "#content > div.row > div.col-lg-12.m-b-5 > div > strong")
 	private WebElement successCreateMsg;
@@ -123,6 +135,12 @@ public class VisitPage {
 	}
 	
 	public void saveUpdateData() {
+		inputPIC.sendKeys("a");
+		inputTelp.sendKeys("1");
+		selectPosition.click();
+		selectPosition.sendKeys(Keys.ENTER);
+		selectAccpCard.click();
+		selectAccpCard.sendKeys(Keys.ENTER);
 		btnSave2.click();
 		waiting();
 	}
@@ -162,9 +180,7 @@ public class VisitPage {
 
 	public void submitJCB() {
 		btnSave.click();
-		waiting();
-		waiting();
-		waiting();
+		waiting(10000);
 	}
 
 	public String getTxtError() {
@@ -247,7 +263,16 @@ public class VisitPage {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+	}
+	
+	private void waiting(int i) {
+		try {
+			Thread.sleep(i);
+		} catch (InterruptedException e) {
+			
 			e.printStackTrace();
 		}
 	}
