@@ -25,6 +25,27 @@ public class MasterAreaPages {
 		gotoAreaPage.click();
 	}
 	
+	@FindBy(css = "#data-table-default > tbody > tr:nth-child(1) > td.sorting_1")
+	private WebElement btnCollapseArea;
+	
+	@FindBy(css = "#data-table-default > tbody > tr.child > td > ul > li > span.dtr-data > a")
+	private WebElement btnEditArea;
+	
+	@FindBy(css = "#pop > form > fieldset > div > input")
+	private WebElement txtEditArea;
+	
+	@FindBy(css = "#pop > form > fieldset > button")
+	private WebElement btnSaveEdit;
+	
+	public void editArea(String editArea) {
+		btnCollapseArea.click();
+		btnEditArea.click();
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(txtEditArea));
+		txtEditArea.sendKeys(Keys.CONTROL + "a");
+		txtEditArea.sendKeys(editArea);
+		btnSaveEdit.click();
+	}
 	
 	@FindBy(css = "#content > div.row > div:nth-child(1) > div > a")
 	private WebElement btnAddNewArea;

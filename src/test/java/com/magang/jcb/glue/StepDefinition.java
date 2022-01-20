@@ -210,6 +210,18 @@ public class StepDefinition {
 		user.gotoUser();
 		extentTest.log(LogStatus.PASS, "Menampilkan data table user");
 	}
+	
+	@When("^Mengubah data user")
+	public void Mengubah_data_user() {
+		user.editUser();
+		extentTest.log(LogStatus.PASS, "Mengubah data user");
+	}
+	
+	@When("^Menghapus data user")
+	public void Menghapus_data_user() {
+		user.clickBtnDelete();
+		extentTest.log(LogStatus.PASS, "Menghapus data user");
+	}
 
 	@When("^Menampilkan form tambah data user")
 	public void Menampilkan_form_tambah_data_user() {
@@ -259,6 +271,12 @@ public class StepDefinition {
 		kota.clickGotoKota();
 		extentTest.log(LogStatus.PASS, "Menampilkan data kota");
 	}
+	
+	@When("^Mengubah data kota")
+	public void Mengubah_data_kota() {
+		kota.inputEditKota(configProperties.getKota1());
+		extentTest.log(LogStatus.PASS, "Mengubah data kota");
+	}
 
 	@When("^Menampilkan form data kota")
 	public void Menampilkan_form_data_kota() {
@@ -283,6 +301,12 @@ public class StepDefinition {
 	public void Menampilkan_data_area() {
 		area.clickArea();
 		extentTest.log(LogStatus.PASS, "Menampilkan data area");
+	}
+	
+	@When("^Mengubah data area")
+	public void Mengubah_data_area() {
+		area.editArea(configProperties.getArea1());
+		extentTest.log(LogStatus.PASS, "Mengubah data area");
 	}
 
 	@When("^Menampilkan form data area")
@@ -461,68 +485,68 @@ public class StepDefinition {
 		validasi.Validate();
 		extentTest.log(LogStatus.PASS,"Menampilkan Pop up Validate form");
 	}
-		
-//	@When("^Menyimpan data validate")
-//	public void Menyimpan_data_validate() {
-//		validasi.SubmitValidate();
-//		extentTest.log(LogStatus.PASS,"Menyimpan data validate");
-//	}
+
+	@When("^Menyimpan data validate")
+	public void Menyimpan_data_validate() {
+		validasi.SubmitValidate();
+		extentTest.log(LogStatus.PASS,"Menyimpan data validate");
+	}
 		
 	@When("^Tidak menyimpan data validate")
 	public void Tidak_menyimpan_data_validate() {
 		validasi.CancelValidate();
 		extentTest.log(LogStatus.PASS,"Tidak menyimpan data validate");
 	}
+
+		
+	@When("^Menampilkan Pop up return form")
+	public void Menampilkan_Pop_up_return_form() {
+		validasi.Return();
+		extentTest.log(LogStatus.PASS,"Menampilkan Pop up return form");
+	}
+
+	@When("^Mengisi Note return")
+	public void Mengisi_Note_return() {
+		validasi.NotesReturn(configProperties.getNotesreturn());
+		extentTest.log(LogStatus.PASS,"Mengisi Note return");
+	}
+		
+	@When("^Menyimpan data return")
+	public void Menyimpan_data_return() {
+		validasi.SubmitReturn();
+		extentTest.log(LogStatus.PASS,"Menyimpan data return");
+	}
+		
+	@When("^Tidak menyimpan data return")
+	public void Tidak_menyimpan_data_return() {
+		validasi.CancelReturn();
+		extentTest.log(LogStatus.PASS,"Tidak menyimpan data return");
+	}
 		
 		
-//	@When("^Menampilkan Pop up return form")
-//	public void Menampilkan_Pop_up_return_form() {
-//		validasi.Return();
-//		extentTest.log(LogStatus.PASS,"Menampilkan Pop up return form");
-//	}
+	@When("^Menampilkan Pop up reject form")
+	public void Menampilkan_Pop_up_rejectform() {
+		validasi.Reject();
+		extentTest.log(LogStatus.PASS,"Menampilkan Pop up reject form");
+	}
 		
-//	@When("^Mengisi Note return")
-//	public void Mengisi_Note_return() {
-//		validasi.NotesReturn(configProperties.getNotesreturn());
-//		extentTest.log(LogStatus.PASS,"Mengisi Note return");
-//	}
+	@When("^Mengisi Note reject")
+	public void Mengisi_Note_reject() {
+		validasi.NotesReject(configProperties.getNotesreject());
+		extentTest.log(LogStatus.PASS,"Mengisi Note reject");
+	}
 		
-//	@When("^Menyimpan data return")
-//	public void Menyimpan_data_return() {
-//		validasi.SubmitReturn();
-//		extentTest.log(LogStatus.PASS,"Menyimpan data return");
-//	}
+	@When("^Menyimpan data reject")
+	public void Menyimpan_data_reject() {
+		validasi.SubmitReject();
+		extentTest.log(LogStatus.PASS,"Menyimpan data reject");
+	}
 		
-//	@When("^Tidak menyimpan data return")
-//	public void Tidak_menyimpan_data_return() {
-//		validasi.CancelReturn();
-//		extentTest.log(LogStatus.PASS,"Tidak menyimpan data return");
-//	}
-		
-		
-//	@When("^Menampilkan Pop up reject form")
-//	public void Menampilkan_Pop_up_rejectform() {
-//		validasi.Reject();
-//		extentTest.log(LogStatus.PASS,"Menampilkan Pop up reject form");
-//	}
-		
-//	@When("^Mengisi Note reject")
-//	public void Mengisi_Note_reject() {
-//		validasi.NotesReject(configProperties.getNotesreject());
-//		extentTest.log(LogStatus.PASS,"Mengisi Note reject");
-//	}
-		
-//	@When("^Menyimpan data reject")
-//	public void Menyimpan_data_reject() {
-//		validasi.SubmitReject();
-//		extentTest.log(LogStatus.PASS,"Menyimpan data reject");
-//	}
-		
-//	@When("^Tidak menyimpan data reject")
-//	public void Tidak_menyimpan_data_reject() {
-//		validasi.CancelReject();
-//		extentTest.log(LogStatus.PASS,"Tidak menyimpan data reject");
-//	}
+	@When("^Tidak menyimpan data reject")
+	public void Tidak_menyimpan_data_reject() {
+		validasi.CancelReject();
+		extentTest.log(LogStatus.PASS,"Tidak menyimpan data reject");
+	}
 	
 	//============================ Monitoring =====================================	
 	@When("^Menampilkan Monitoring")
@@ -668,7 +692,7 @@ public class StepDefinition {
 
 	@When("^Unduh laporan")
 	public void downloadReport() {
-//		reportPage.downloadReport();
+		reportPage.downloadReport();
 		extentTest.log(LogStatus.PASS, "Unduh laporan");
 	}
 

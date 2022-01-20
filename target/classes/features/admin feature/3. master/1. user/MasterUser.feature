@@ -2,6 +2,8 @@ Feature: Master user activity
 	Scenario: Input data user
 	When Menampilkan dropdown menu master
 	And Menampilkan data table user
+	And Mengubah data user
+	And Menghapus data user
 	And Menampilkan form tambah data user
 	And Mengisi NIK
 	And Mengisi nama

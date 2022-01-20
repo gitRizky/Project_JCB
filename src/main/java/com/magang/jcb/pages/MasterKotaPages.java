@@ -25,6 +25,27 @@ public class MasterKotaPages {
 		gotoKota.click();
 	}
 	
+	@FindBy(css = "#data-table-default > tbody > tr.odd > td.sorting_1")
+	private WebElement collapseKota;
+	
+	@FindBy(css = "#data-table-default > tbody > tr.child > td > ul > li > span.dtr-data > a")
+	private WebElement btnEdit;
+	
+	@FindBy(css = "#pop > form > fieldset > div > input")
+	private WebElement txtKota;
+	
+	@FindBy(css = "#pop > form > fieldset > button")
+	private WebElement btnSaveKota;
+	
+	public void inputEditKota(String kota) {
+		collapseKota.click();
+		btnEdit.click();
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(txtKota));
+		txtKota.sendKeys(Keys.CONTROL + "a");
+		txtKota.sendKeys(kota);
+		btnSaveKota.click();
+	}
 	
 	@FindBy(css = "#content > div.row > div:nth-child(1) > div > a")
 	private WebElement btnAddKota;

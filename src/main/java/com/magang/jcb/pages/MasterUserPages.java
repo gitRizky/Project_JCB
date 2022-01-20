@@ -13,9 +13,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.magang.jcb.drivers.DriverSingleton;
 
+import io.github.sukgu.Shadow;
+
 public class MasterUserPages {
 	private WebDriver driver;
 	private Select se;
+	private Shadow shadow;
 	
 	public MasterUserPages() {
 		driver = DriverSingleton.getDriver();
@@ -36,10 +39,34 @@ public class MasterUserPages {
 		gotoUser.click();
 	}
 	
+	@FindBy(css = "#data-table-default_paginate > ul > li:nth-child(8) > a")
+	private WebElement btnPage;
 	
-	
-	@FindBy(css = "#data-table-default > tbody > tr:nth-child(1) > td.sorting_1")
+	@FindBy(css = "#data-table-default > tbody > tr:nth-child(3) > td.sorting_1")
 	private WebElement btnCollapse;
+	
+	@FindBy(css = "#data-table-default > tbody > tr.child > td > ul > li > span.dtr-data > a.btn.btn-primary.btn-xs")
+	private WebElement btnEditUser;
+	
+	@FindBy(xpath = "//*[@id=\"modalEdit\"]/div/div/div[1]/button")
+	private WebElement btnClose;
+	
+	public void editUser() {
+		btnPage.click();
+		btnCollapse.click();
+		btnEditUser.click();
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.elementToBeClickable(btnClose));
+		btnClose.click();
+	}
+	
+	@FindBy(css = "#data-table-default > tbody > tr.child > td > ul > li > span.dtr-data > a.btn.btn-danger.btn-xs")
+	private WebElement btnDelete;
+	
+	public void clickBtnDelete() {
+		btnDelete.click();
+		driver.switchTo().alert().accept();
+	}
 	
 	@FindBy(css = "#content > div.row > div.col.col-lg-12 > div > a")
 	private WebElement btnAddNew;
