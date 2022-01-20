@@ -83,6 +83,48 @@ public class ConfigurationProperties {
 	
 	@Value("${m5}")
 	private String m5;
+
+	@Value("${Batch}")
+	private String batch;
+	
+	@Value("${nameMerchant}")
+	private String namemerchant;
+	
+	@Value("${nameAddress}")
+	private String nameaddress;
+	
+	@Value("${nameFloor}")
+	private String namefloor;
+	
+	@Value("${nameCategory}")
+	private String nameCategory;
+	
+	@Value("${searchMerchant}")
+	private String smerchant;
+	
+	public String getBatch() {
+		return batch;
+	}
+
+	public String getNameMerchant() {
+		return namemerchant;
+	}
+
+	public String getNameAddress() {
+		return nameaddress;
+	}
+
+	public String getNameFloor() {
+		return namefloor;
+	}
+
+	public String getNameCategory() {
+		return nameCategory;
+	}
+
+	public String getSmerchant() {
+		return smerchant;
+	}
 	
 	public String getMid() {
 		return mid;
@@ -356,4 +398,6 @@ public class ConfigurationProperties {
 	public String getSearch4() {
 		return search4;
 	}
+
+	
 }

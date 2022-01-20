@@ -13,6 +13,7 @@ import com.magang.jcb.drivers.DriverSingleton;
 import com.magang.jcb.pages.BucketValidasi;
 import com.magang.jcb.pages.CompletedPage;
 import com.magang.jcb.pages.DashboardPages;
+import com.magang.jcb.pages.DataMerchant;
 import com.magang.jcb.pages.LoginPages;
 import com.magang.jcb.pages.LoginSurveyorPages;
 import com.magang.jcb.pages.MasterAreaPages;
@@ -49,6 +50,7 @@ public class StepDefinition {
 	private MasterUserPages user;
 	private MasterKotaPages kota;
 	private MasterAreaPages area;
+	private DataMerchant merchant;
 	private BucketValidasi validasi;
 	private Monitoring monitoring;
 	private ReportPage reportPage;
@@ -74,6 +76,7 @@ public class StepDefinition {
 		user = new MasterUserPages();
 		kota = new MasterKotaPages();
 		area = new MasterAreaPages();
+		merchant = new DataMerchant();
 		validasi = new BucketValidasi();
 		monitoring = new Monitoring();
 		reportPage = new ReportPage();
@@ -299,6 +302,128 @@ public class StepDefinition {
 		area.clickSave();
 		extentTest.log(LogStatus.PASS, "Menambahkan data");
 	}
+	
+	//============================Data Merchant===================================
+	
+			@When("^Menampilkan form data merchant")
+			public void formMerchant() {
+				merchant.dataMerchant();
+				extentTest.log(LogStatus.PASS,"Menampilkan menu merchant");
+			}
+			
+			@When("^Mengurutkan baris angka pada kolom No.")
+			public void SortirNo() {
+				merchant.sortNo();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No");
+			}
+			
+			@When("^Mengurutkan baris pada kolom batch")
+			public void SortirBatch() {
+				merchant.sortBatch();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom batch");
+			}
+			
+			@When("^Mengurutkan baris pada kolom nama merchant")
+			public void SortirMerchant() {
+				merchant.sortMerchant();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom nama merchant");
+			}
+			
+			@When("^Mengurutkan baris pada kolom address")
+			public void SortirAddress() {
+				merchant.sortAddress();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom address");
+			}
+			
+			@When("^Mengurutkan baris pada kolom category")
+			public void SortirCategory() {
+				merchant.sortCategory();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom category");		
+			}
+			
+			@When("^Mengurutkan baris pada kolom officer")
+			public void SortirOfficer() {
+				merchant.sortOfficer();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom officer");		
+			}
+			
+			@When("^Mengurutkan baris pada kolom status visit")
+			public void SortirStatus() {
+				merchant.sortStatus();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom status visit");		
+			}
+			
+			@When("^Pindah ke tabel selanjutnya")
+			public void NextPage() {
+				merchant.nextButton();
+				extentTest.log(LogStatus.PASS,"Pindah ke tabel selanjutnya");
+			}
+			
+			@When("^Mencari nama merchant")
+			public void SearchMerchant() {
+				merchant.searchMerchant(configProperties.getSmerchant());
+				extentTest.log(LogStatus.PASS,"Mencari nama merchant");
+			}
+			
+			@When("^Menambahkan data merchant")
+			public void addMerchant() {
+				merchant.addNew();
+				extentTest.log(LogStatus.PASS, "Menampilkan form new merchant");
+			}
+			
+			@When("^Menginput batch")
+			public void addBatch() {
+				merchant.inputBatch(configProperties.getBatch());
+				extentTest.log(LogStatus.PASS, "Menginput batch");
+			}
+
+			@When("^Memilih kota")
+			public void addKota() {
+				merchant.nameKota();
+				extentTest.log(LogStatus.PASS, "Memilih kota");
+			}
+			
+			@When("^Memilih area")
+			public void addArea() {
+				merchant.nameArea();
+				extentTest.log(LogStatus.PASS, "Memilih area");
+			}
+			
+			@When("^Menginput merchant name")
+			public void addMerchantname() {
+				merchant.inputMerchant(configProperties.getNameMerchant());
+				extentTest.log(LogStatus.PASS, "Menginput merchant name");
+			}
+			
+			@When("^Menginput address")
+			public void addAddress() {
+				merchant.inputAddress(configProperties.getNameAddress());
+				extentTest.log(LogStatus.PASS, "Menginput address");
+			}
+			
+			@When("^Menginput address by floor")
+			public void addFloor() {
+				merchant.inputFloor(configProperties.getNameFloor());
+				extentTest.log(LogStatus.PASS, "Menginput address by floor");
+			}
+			
+			@When("^Menginput category")
+			public void addCategory() {
+				merchant.inputCategory(configProperties.getNameCategory());
+				extentTest.log(LogStatus.PASS, "Menginput category");
+			}
+			
+			@When("^Memilih users")
+			public void addUsers() {
+				merchant.nameUsers();
+				extentTest.log(LogStatus.PASS, "Memilih users");
+			}
+			
+			@Then("^Menyimpan input data merchant")
+			public void saveForm() {
+				merchant.saveBtn();
+				extentTest.log(LogStatus.PASS, "Menyimpan input data merchant");
+			}
 
 	//============================ Bucket Validasi ================================
 	@When("^Menampilkan Data Validation")
