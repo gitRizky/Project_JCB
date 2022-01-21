@@ -16,6 +16,7 @@ import com.magang.jcb.pages.BucketValidasi;
 import com.magang.jcb.pages.CompletedPage;
 import com.magang.jcb.pages.DashboardPages;
 import com.magang.jcb.pages.DataMerchant;
+import com.magang.jcb.pages.BucketDistribusi;
 import com.magang.jcb.pages.LoginPages;
 import com.magang.jcb.pages.LoginSurveyorPages;
 import com.magang.jcb.pages.MasterAreaPages;
@@ -53,6 +54,7 @@ public class StepDefinition {
 	private MasterKotaPages kota;
 	private MasterAreaPages area;
 	private DataMerchant merchant;
+	private BucketDistribusi distribusi;
 	private BucketValidasi validasi;
 	private Monitoring monitoring;
 	private ReportPage reportPage;
@@ -79,6 +81,7 @@ public class StepDefinition {
 		kota = new MasterKotaPages();
 		area = new MasterAreaPages();
 		merchant = new DataMerchant();
+		distribusi = new BucketDistribusi();
 		validasi = new BucketValidasi();
 		monitoring = new Monitoring();
 		reportPage = new ReportPage();
@@ -454,7 +457,129 @@ public class StepDefinition {
 				merchant.saveBtn();
 				extentTest.log(LogStatus.PASS, "Menyimpan input data merchant");
 			}
-
+			
+	//============================Bucket Distribusi================================
+			@When("^Drop down list yang berisi form upload data dan form campaign setupDrop down list yang berisi form upload data dan form campaign setup")
+			public void DropDownMenu() {
+				distribusi.MenuSidebar();
+				extentTest.log(LogStatus.PASS,"Drop down list yang berisi form upload data dan form campaign setupDrop down list yang berisi form upload data dan form campaign setup");
+			}
+				
+			@When("^Menampilkan form data distribusi")
+			public void MenuDistribusi() {
+				distribusi.MenuDistribusi();
+				extentTest.log(LogStatus.PASS,"Drop down list yang berisi nama area");
+			}
+			
+			@When("^Mengurutkan baris angka pada kolom No.")
+			public void SortirNoDistribusi() {
+				distribusi.SortNo1();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No.");
+			}
+			
+			@When("^Mengurutkan baris pada kolom Nik")
+			public void SortirNikDistribusi() {
+				distribusi.Nik();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom Nik");
+			}
+			
+			@When("^Mengurutkan baris pada kolom Name")
+			public void SortirNameDistribusi() {
+				distribusi.SortName1();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom Name");
+			}
+			
+			@When("^Mengurutkan baris pada total data")
+			public void SortirTotalData() {
+				distribusi.SortTotalData();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada total data");
+			}
+			
+			@When("^Mengurutkan baris pada data visit")
+			public void SortirStatusVisit() {
+				distribusi.StatusVisit();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada data visit");
+			}
+			
+			@When("^Mengurutkan baris pada data unvisit")
+			public void SortirStatusUnvisit() {
+				distribusi.StatusUnvisit();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada data unvisit");
+			}
+			
+			@When("^Mencari data distribusi")
+			public void SearchDistribusi() {
+				distribusi.SearchDistribusi(configProperties.getSdistribusi());
+				extentTest.log(LogStatus.PASS,"Mencari nama merchant");
+			}
+			
+			@When("^Menampilkan form data No. assignment")
+			public void Assignment() {
+				distribusi.Assignment();
+				extentTest.log(LogStatus.PASS,"Menampilkan form data No. assignment");
+			}
+			
+			@When("^Memilih data assignment")
+			public void PilihDataAssignment() {
+				distribusi.PilihDataAssignment();
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No.");
+			}
+			
+			@When("^Memilih user assignment")
+			public void PilihUserAssignment() {
+				distribusi.PilihUserAssignment();
+				extentTest.log(LogStatus.PASS,"Memilih user assignment");
+			}
+			
+			@When("^Memilih user assignment dari daftar list")
+			public void FormUserAssignment() {
+				distribusi.FormUserAssignment();
+				extentTest.log(LogStatus.PASS,"Memilih user assignment dari daftar list");
+			}
+	
+			
+			@When("^Menyimpan perubahan assignment")
+			public void SubmitAssignment() {
+				distribusi.SubmitAssignment();
+				extentTest.log(LogStatus.PASS,"Menyimpan perubahan assignment");
+			}
+			
+			@When("^Drop down list button action")
+			public void DropdownAction() {
+				distribusi.ButtonAction();
+				extentTest.log(LogStatus.PASS,"Drop down list button action");
+			}
+			
+			@When("^Menampilkan detail distribusi")
+			public void DetailDistribusi() {
+				distribusi.PilihDataDistribusi();
+				extentTest.log(LogStatus.PASS,"Menampilkan detail distribusi");
+			}
+			
+			@When("^Memilih data dari checkbox")
+			public void CheckboxDistribusi() {
+				distribusi.CeklisBox();
+				extentTest.log(LogStatus.PASS,"Memilih data dari checkbox");
+			}
+			
+			@When("^Memilih user distribusi")
+			public void PilihUserDistribusi() {
+				distribusi.PilihUserDistribusi();
+				extentTest.log(LogStatus.PASS,"Memilih user distribusi");
+			}
+			
+			@When("^Memilih user distribusi dari daftar list")
+			public void FormUserDistribusi() {
+				distribusi.formUserDistribusi();
+				extentTest.log(LogStatus.PASS,"Memilih user dari daftar list");
+			}
+	
+			@When("^Menyimpan perubahan distribusi")
+			public void SubmitDistribusi() {
+				distribusi.SubmitDistribusi();
+				extentTest.log(LogStatus.PASS,"Menyimpan perubahan distribusi");
+			}
+			
 	//============================ Bucket Validasi ================================
 	@When("^Menampilkan Data Validation")
 	public void Menampilkan_Data_Validation() {

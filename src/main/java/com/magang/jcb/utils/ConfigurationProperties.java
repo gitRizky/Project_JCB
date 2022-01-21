@@ -102,6 +102,9 @@ public class ConfigurationProperties {
 	@Value("${smerchant}")
 	private String smerchant;
 	
+	@Value("${ssistribusi}")
+	private String sdistribusi;
+	
 	public String getBatch() {
 		return batch;
 	}
@@ -124,6 +127,10 @@ public class ConfigurationProperties {
 
 	public String getSmerchant() {
 		return smerchant;
+	}
+	
+	public String getSdistribusi() {
+		return sdistribusi;
 	}
 	
 	public String getMid() {
