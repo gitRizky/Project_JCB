@@ -4,6 +4,8 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -213,9 +215,12 @@ public class StepDefinition {
 	}
 	
 	@When("^Mengubah data user")
-	public void Mengubah_data_user() {
+	public void Mengubah_data_user() throws Throwable {
 		user.editUser();
-		extentTest.log(LogStatus.PASS, "Mengubah data user");
+		String screenShotPath = GetScreenShot.capture(driver, "Gagal mengubah data user");
+		user.editUserClose();
+		extentTest.log(LogStatus.FAIL, "Mengubah data user" + extentTest.addScreenCapture(screenShotPath));
+
 	}
 	
 	@When("^Menghapus data user")
@@ -699,7 +704,7 @@ public class StepDefinition {
 
 	@Then("^Unduh template laporan")
 	public void downloadReport2() {
-		reportPage.downloadReport2();
+//		reportPage.downloadReport2();
 		extentTest.log(LogStatus.PASS, "Unduh template laporan");
 
 	}

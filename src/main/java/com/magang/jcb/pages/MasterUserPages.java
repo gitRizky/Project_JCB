@@ -57,6 +57,10 @@ public class MasterUserPages {
 		btnEditUser.click();
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.elementToBeClickable(btnClose));
+		
+	}
+	
+	public void editUserClose() {
 		btnClose.click();
 	}
 	
