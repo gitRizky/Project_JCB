@@ -1,5 +1,7 @@
 package com.magang.jcb.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -72,8 +74,8 @@ public class DashboardPages {
 	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(1) > td:nth-child(5)")
 	private WebElement txtTotalPriceD;
 	
-	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr:nth-child(26) > td:nth-child(5)")
-	private WebElement txtGrandTotal;
+	@FindBy(css = "#content > div:nth-child(4) > div > div > div.panel-body.p-t-0 > div > table > tbody > tr")
+	private List<WebElement> txtGrandTotal;
 	
 	public String getTxtAreaD() {
 		return txtAreaD.getText();
@@ -96,6 +98,6 @@ public class DashboardPages {
 	}
 	
 	public String getTxtGrandTotal() {
-		return txtGrandTotal.getText();
+		return txtGrandTotal.get(txtGrandTotal.size()-2).getText();
 	}
 }

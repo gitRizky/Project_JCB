@@ -84,22 +84,22 @@ public class ConfigurationProperties {
 	@Value("${m5}")
 	private String m5;
 
-	@Value("${Batch}")
+	@Value("${batch}")
 	private String batch;
 	
-	@Value("${nameMerchant}")
+	@Value("${merchant}")
 	private String namemerchant;
 	
-	@Value("${nameAddress}")
+	@Value("${address}")
 	private String nameaddress;
 	
-	@Value("${nameFloor}")
+	@Value("${floor}")
 	private String namefloor;
 	
-	@Value("${nameCategory}")
+	@Value("${category}")
 	private String nameCategory;
 	
-	@Value("${searchMerchant}")
+	@Value("${smerchant}")
 	private String smerchant;
 	
 	public String getBatch() {

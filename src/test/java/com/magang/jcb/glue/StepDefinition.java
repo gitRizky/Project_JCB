@@ -194,7 +194,8 @@ public class StepDefinition {
 	
 	@Then("^Menampilkan grand total")
 	public void Menampilkan_grand_total() {
-		assertEquals(configProperties.getGrand(), db.getTxtGrandTotal());
+//		assertEquals(configProperties.getGrand(), db.getTxtGrandTotal());
+		assertThat(db.getTxtGrandTotal(), containsString(configProperties.getGrand()));
 		extentTest.log(LogStatus.PASS, "Menampilkan grand total");
 	}
 

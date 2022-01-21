@@ -119,6 +119,11 @@ private WebDriver driver;
 	}
 	
 	public void inputBatch(String batch) {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		nameBatch.sendKeys(batch);
 	}
 	
