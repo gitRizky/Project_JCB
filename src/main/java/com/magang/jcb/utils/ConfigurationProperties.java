@@ -318,8 +318,8 @@ public class ConfigurationProperties {
 	@Value("${area}")
 	private String area;
 	
-	@Value("${merchant}")
-	private String merchant;
+	@Value("${merchantDB}")
+	private String merchantDB;
 	
 	@Value("${visit}")
 	private String visit;
@@ -337,8 +337,8 @@ public class ConfigurationProperties {
 		return area;
 	}
 	
-	public String getMerchant() {
-		return merchant;
+	public String getMerchantDB() {
+		return merchantDB;
 	}
 	
 	public String getVisit() {

@@ -170,19 +170,19 @@ public class StepDefinition {
 	
 	@When("^Menampilkan data jumlah merchant")
 	public void Menampilkan_data_jumlah_merchant() {
-		assertEquals(configProperties.getMerchant(), db.getTxtMerchantD());
+		assertThat(db.getTxtMerchantD(), containsString(configProperties.getMerchantDB()));
 		extentTest.log(LogStatus.PASS, "Menampilkan data jumlah merchant");
 	}
 	
 	@When("^Menampilkan data jumlah visit")
 	public void Menampilkan_data_jumlah_visit() {
-		assertEquals(configProperties.getVisit(), db.getTxtVisitD());
+		assertThat(db.getTxtVisitD(), containsString(configProperties.getVisit()));
 		extentTest.log(LogStatus.PASS, "Menampilkan data jumlah visit");
 	}
 	
 	@When("^Menampilkan data jumlah unvisit")
 	public void Menampilkan_data_jumlah_unvisit() {
-		assertEquals(configProperties.getUnvisit(), db.getTxtUnvisitD());
+		assertThat(db.getTxtUnvisitD(), containsString(configProperties.getUnvisit()));
 		extentTest.log(LogStatus.PASS, "Menampikan data jumlah unvisit");
 	}
 	
