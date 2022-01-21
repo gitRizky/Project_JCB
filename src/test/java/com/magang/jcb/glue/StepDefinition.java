@@ -471,10 +471,10 @@ public class StepDefinition {
 				extentTest.log(LogStatus.PASS,"Drop down list yang berisi nama area");
 			}
 			
-			@When("^Mengurutkan baris angka pada kolom No.")
+			@When("^Mengurutkan baris angka pada kolom No. distribusi")
 			public void SortirNoDistribusi() {
 				distribusi.SortNo1();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No.");
+				extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No. distribusi");
 			}
 			
 			@When("^Mengurutkan baris pada kolom Nik")

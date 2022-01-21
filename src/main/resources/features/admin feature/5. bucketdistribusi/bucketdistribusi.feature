@@ -17,7 +17,5 @@ Scenario: Testing bucket distribusi
 		And Memilih data dari checkbox
 		And Memilih user distribusi
 		And Memilih user distribusi dari daftar list
-		And Menginput address by floor
-		And Menginput category
-		And Memilih users
-		Then Menyimpan input data merchant
+		Then Menyimpan perubahan distribusi
+
