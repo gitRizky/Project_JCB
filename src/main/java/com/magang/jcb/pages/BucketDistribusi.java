@@ -18,7 +18,7 @@ private WebDriver driver;
 		@FindBy(css = "#sidebar > div > div:nth-child(1) > ul:nth-child(2) > li:nth-child(5) > a")
 		private WebElement btnSidebar;
 		
-		@FindBy(css = "#sidebar > div > div:nth-child(1) > ul:nth-child(2) > li.has-sub.expand > ul > li.active > a")
+		@FindBy(css = "a[href='https://dev.ptdika.com/jcb/new/distribusi']")
 		private WebElement btnDistribusi;
 		
 		@FindBy (css = "#data-table-default > thead > tr > th.sorting_asc")
@@ -78,11 +78,14 @@ private WebDriver driver;
 		@FindBy (css= "#data-table-default_filter > label > input")
 		private WebElement sDistribusi;
 	
-		public void MenuSidebar() {
-			btnSidebar.click();
-		}
 		
 		public void MenuDistribusi() {
+			btnSidebar.click();
+			try {
+				 Thread.sleep(3000);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 			btnDistribusi.click();
 		}
 		

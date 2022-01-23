@@ -459,12 +459,7 @@ public class StepDefinition {
 			}
 			
 	//============================Bucket Distribusi================================
-			@When("^Drop down list yang berisi form upload data dan form campaign setupDrop down list yang berisi form upload data dan form campaign setup")
-			public void DropDownMenu() {
-				distribusi.MenuSidebar();
-				extentTest.log(LogStatus.PASS,"Drop down list yang berisi form upload data dan form campaign setupDrop down list yang berisi form upload data dan form campaign setup");
-			}
-				
+			
 			@When("^Menampilkan form data distribusi")
 			public void MenuDistribusi() {
 				distribusi.MenuDistribusi();
