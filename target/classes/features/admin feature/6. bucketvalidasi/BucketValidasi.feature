@@ -8,11 +8,15 @@ Scenario: Testing Bucket Validasi
 		And Menampilkan Pop up Validate form
 #		And Menyimpan data validate
 		And Tidak menyimpan data validate
-#		And Menampilkan Pop up return form
-#		And Mengisi Note return
-#		And Menyimpan data return
+		And Mencari Data merchant name untuk return
+		And Menampilkan Detail Visit untuk return
+		And Menampilkan Pop up return form
+		And Mengisi Note return
+		And Menyimpan data return
 #		And Tidak menyimpan data return
-#		And Menampilkan Pop up reject form
-#		And Mengisi Note reject
-#		And Menyimpan data reject
+		And Mencari Data merchant name untuk reject
+		And Menampilkan Detail Visit untuk reject
+		And Menampilkan Pop up reject form
+		And Mengisi Note reject
+		And Menyimpan data reject
 #		Then Tidak menyimpan data reject

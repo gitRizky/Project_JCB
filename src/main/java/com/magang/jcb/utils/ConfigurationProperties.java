@@ -367,31 +367,29 @@ public class ConfigurationProperties {
 	@Value("${search1}")
 	private String search1;
 	
-	@Value("${notesreturn}")
-	private String notesreturn;
-	
-	@Value("${notesreject}")
-	private String notesreject;
-	
 	@Value("${search2}")
 	private String search2;
 	
 	@Value("${search3}")
 	private String search3;
 	
-	@Value("${search4}")
-	private String search4;
+	@Value("${notesreturn}")
+	private String notesreturn;
 	
+	@Value("${notesreject}")
+	private String notesreject;
+	
+	@Value("${searchM1}")
+	private String searchM1;
+	
+	@Value("${searchM2}")
+	private String searchM2;
+	
+	@Value("${searchM3}")
+	private String searchM3;
+
 	public String getSearch1() {
 		return search1;
-	}
-
-	public String getNotesreturn() {
-		return notesreturn;
-	}
-
-	public String getNotesreject() {
-		return notesreject;
 	}
 
 	public String getSearch2() {
@@ -402,8 +400,24 @@ public class ConfigurationProperties {
 		return search3;
 	}
 
-	public String getSearch4() {
-		return search4;
+	public String getNotesreturn() {
+		return notesreturn;
+	}
+
+	public String getNotesreject() {
+		return notesreject;
+	}
+
+	public String getSearchM1() {
+		return searchM1;
+	}
+
+	public String getSearchM2() {
+		return searchM2;
+	}
+
+	public String getSearchM3() {
+		return searchM3;
 	}
 
 	

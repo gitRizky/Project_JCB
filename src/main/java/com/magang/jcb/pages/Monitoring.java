@@ -90,6 +90,11 @@ private WebDriver driver;
 	private WebElement btnCloseViewEDC2;
 	
 	public void PageMonitoring() {
+		try {
+			 Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		btnMonitoring.click();
 	}
 	

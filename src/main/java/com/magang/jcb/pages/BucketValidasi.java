@@ -54,7 +54,7 @@ private WebDriver driver;
 	@FindBy(css = "#content > div:nth-child(5) > div > button.btn.btn-warning")
 	private WebElement btnReturn;
 	
-	@FindBy(css = "#form_return > div:nth-child(4) > div > textarea")
+	@FindBy(xpath = "//*[@id=\"form_return\"]/div[2]/div/textarea")
 	private WebElement txtNotesReturn;
 	
 	@FindBy(id = "btnSave2")
@@ -95,6 +95,7 @@ private WebDriver driver;
 	public void FilterArea() {
 		FilterArea.click();
 		FilterArea.sendKeys(Keys.DOWN);
+		FilterArea.sendKeys(Keys.DOWN);
 	}
 	
 	public void BtnFilter() {
@@ -107,13 +108,13 @@ private WebDriver driver;
 	}
 	
 	
-	public void Search(String merchant) {
+	public void Search1(String merchant) {
 		txtSearch1.click();
 		txtSearch1.sendKeys(merchant);
 		txtSearch1.sendKeys(Keys.ENTER);
 	}
 	
-	public void View() {
+	public void View1() {
 		try {
 			 Thread.sleep(2000);
 		} catch (Exception e) {
@@ -152,14 +153,33 @@ private WebDriver driver;
 	
 	
 	//Return
+	public void Search2(String merchant) {
+		try {
+			 Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		txtSearch2.click();
+		txtSearch2.sendKeys(merchant);
+		txtSearch2.sendKeys(Keys.ENTER);
+	}
+	
+	public void View2() {
+		try {
+			 Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		btnView2.click();
+	}
+	
 	public void Return() {
 		btnReturn.click();
 	}
 	
 	public void NotesReturn(String notesreturn) {
-		txtNotesReturn.click();
 		try {
-			 Thread.sleep(3000);
+			 Thread.sleep(2000);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -167,6 +187,11 @@ private WebDriver driver;
 	}
 	
 	public void SubmitReturn() {
+		try {
+			 Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		btnSubmitReturn.click();
 	}
 	
@@ -180,14 +205,33 @@ private WebDriver driver;
 	}
 	
 	//Reject
+	public void Search3(String merchant) {
+		try {
+			 Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		txtSearch3.click();
+		txtSearch3.sendKeys(merchant);
+		txtSearch3.sendKeys(Keys.ENTER);
+	}
+	
+	public void View3() {
+		try {
+			 Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		btnView3.click();
+	}
+	
 	public void Reject() {
 		btnReject.click();
 	}
 	
 	public void NotesReject(String notesreject) {
-		txtNotesReject.click();
 		try {
-			 Thread.sleep(3000);
+			 Thread.sleep(2000);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -195,6 +239,11 @@ private WebDriver driver;
 	}
 	
 	public void SubmitReject() {
+		try {
+			 Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		btnSubmitReject.click();
 	}
 	
@@ -206,4 +255,5 @@ private WebDriver driver;
 		}
 		btnCancelReject.click();
 	}
+	
 }

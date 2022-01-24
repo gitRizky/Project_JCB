@@ -600,13 +600,13 @@ public class StepDefinition {
 
 	@When("^Mencari Data merchant name")
 	public void Mencari_Data_merchant_name() {
-		validasi.Search(configProperties.getSearch1());
+		validasi.Search1(configProperties.getSearch1());
 		extentTest.log(LogStatus.PASS, "Mencari Data merchant name");
 	}
 
 	@When("^Menampilkan Detail Visit")
 	public void Menampilkan_Detail_Visit() {
-		validasi.View();
+		validasi.View1();
 		extentTest.log(LogStatus.PASS, "Menampilkan Detail Visit");
 	}
 
@@ -625,9 +625,22 @@ public class StepDefinition {
 	@When("^Tidak menyimpan data validate")
 	public void Tidak_menyimpan_data_validate() {
 		validasi.CancelValidate();
+		validasi.bucketValidasi();
 		extentTest.log(LogStatus.PASS, "Tidak menyimpan data validate");
 	}
 
+	@When("^Mencari Data merchant name untuk return")
+	public void Mencari_Data_merchant_name_untuk_return() {
+		validasi.Search2(configProperties.getSearch2());
+		extentTest.log(LogStatus.PASS,"Mencari Data merchant name untuk return");
+	}
+	
+	@When("^Menampilkan Detail Visit untuk return")
+	public void Menampilkan_Detail_Visit_untuk_return() {
+		validasi.View2();
+		extentTest.log(LogStatus.PASS,"Menampilkan Detail Visit untuk return");
+	}
+	
 	@When("^Menampilkan Pop up return form")
 	public void Menampilkan_Pop_up_return_form() {
 		validasi.Return();
@@ -652,6 +665,18 @@ public class StepDefinition {
 		extentTest.log(LogStatus.PASS, "Tidak menyimpan data return");
 	}
 
+	@When("^Mencari Data merchant name untuk reject")
+	public void Mencari_Data_merchant_name_untuk_reject() {
+		validasi.Search3(configProperties.getSearch3());
+		extentTest.log(LogStatus.PASS,"Mencari Data merchant name untuk reject");
+	}
+	
+	@When("^Menampilkan Detail Visit untuk reject")
+	public void Menampilkan_Detail_Visit_untuk_reject() {
+		validasi.View3();
+		extentTest.log(LogStatus.PASS,"Menampilkan Detail Visit untuk reject");
+	}
+	
 	@When("^Menampilkan Pop up reject form")
 	public void Menampilkan_Pop_up_rejectform() {
 		validasi.Reject();
@@ -716,7 +741,7 @@ public class StepDefinition {
 
 	@When("^Mencari Data Nama")
 	public void Mencari_Data_Nama() {
-		monitoring.txtSearch1(configProperties.getSearch2());
+		monitoring.txtSearch1(configProperties.getSearchM1());
 		extentTest.log(LogStatus.PASS, "Mencari Data Nama");
 	}
 
@@ -752,7 +777,7 @@ public class StepDefinition {
 
 	@When("^Mencari Data Master Merchant")
 	public void Mencari_Data_Master_Merchant() {
-		monitoring.txtSearch2(configProperties.getSearch3());
+		monitoring.txtSearch2(configProperties.getSearchM2());
 		extentTest.log(LogStatus.PASS, "Mencari Data Master Merchant");
 	}
 
@@ -782,7 +807,7 @@ public class StepDefinition {
 
 	@When("^Mencari Data Merchant Issue")
 	public void Mencari_Data_Merchant_Issue() {
-		monitoring.txtSearch3(configProperties.getSearch4());
+		monitoring.txtSearch3(configProperties.getSearchM3());
 		extentTest.log(LogStatus.PASS, "Mencari Data Merchant Issue");
 	}
 
