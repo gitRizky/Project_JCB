@@ -96,7 +96,7 @@ public class StepDefinition {
 		Utility.testCount++;
 	}
 
-	// ============================ Login Admin Activity=====================================
+	// ======================== Login Admin Activity========================
 
 	@Given("^Menampilkan form login")
 	public void Menampilkan_form_login() {
@@ -166,37 +166,37 @@ public class StepDefinition {
 		assertEquals(configProperties.getM5(), db.getSummary());
 		extentTest.log(LogStatus.PASS, "Menampilkan data table summary by area");
 	}
-	
+
 	@When("^Menampilkan data area dashboard")
 	public void Menampilkan_data_area_dashboard() {
 		assertEquals(configProperties.getArea(), db.getTxtAreaD());
 		extentTest.log(LogStatus.PASS, "Menampilkan data area dashboard");
 	}
-	
+
 	@When("^Menampilkan data jumlah merchant")
 	public void Menampilkan_data_jumlah_merchant() {
 		assertThat(db.getTxtMerchantD(), containsString(configProperties.getMerchantDB()));
 		extentTest.log(LogStatus.PASS, "Menampilkan data jumlah merchant");
 	}
-	
+
 	@When("^Menampilkan data jumlah visit")
 	public void Menampilkan_data_jumlah_visit() {
 		assertThat(db.getTxtVisitD(), containsString(configProperties.getVisit()));
 		extentTest.log(LogStatus.PASS, "Menampilkan data jumlah visit");
 	}
-	
+
 	@When("^Menampilkan data jumlah unvisit")
 	public void Menampilkan_data_jumlah_unvisit() {
 		assertThat(db.getTxtUnvisitD(), containsString(configProperties.getUnvisit()));
 		extentTest.log(LogStatus.PASS, "Menampikan data jumlah unvisit");
 	}
-	
+
 	@When("^Menampilkan data jumlah total price")
 	public void Menampilkan_data_jumlah_total_price() {
 		assertEquals(configProperties.getPrice(), db.getTxtTotalPriceD());
 		extentTest.log(LogStatus.PASS, "Menampilkan data jumlah total price");
 	}
-	
+
 	@Then("^Menampilkan grand total")
 	public void Menampilkan_grand_total() {
 //		assertEquals(configProperties.getGrand(), db.getTxtGrandTotal());
@@ -205,6 +205,7 @@ public class StepDefinition {
 	}
 
 	// ============================ Master User Activity ==========================
+	
 	@When("^Menampilkan dropdown menu master")
 	public void Menampilkan_dropdown_menu_master() {
 		user.gotoMaster();
@@ -216,7 +217,7 @@ public class StepDefinition {
 		user.gotoUser();
 		extentTest.log(LogStatus.PASS, "Menampilkan data table user");
 	}
-	
+
 	@When("^Mengubah data user")
 	public void Mengubah_data_user() throws Throwable {
 		user.editUser();
@@ -225,7 +226,7 @@ public class StepDefinition {
 		extentTest.log(LogStatus.FAIL, "Mengubah data user" + extentTest.addScreenCapture(screenShotPath));
 
 	}
-	
+
 	@When("^Menghapus data user")
 	public void Menghapus_data_user() {
 		user.clickBtnDelete();
@@ -275,12 +276,13 @@ public class StepDefinition {
 	}
 
 	// ============================ Master Kota Activity ==========================
+	
 	@When("^Menampilkan data kota")
 	public void Menampilkan_data_kota() {
 		kota.clickGotoKota();
 		extentTest.log(LogStatus.PASS, "Menampilkan data kota");
 	}
-	
+
 	@When("^Mengubah data kota")
 	public void Mengubah_data_kota() {
 		kota.inputEditKota(configProperties.getKota1());
@@ -306,12 +308,13 @@ public class StepDefinition {
 	}
 
 	// ============================ Master area activity ==========================
+	
 	@When("^Menampilkan data area")
 	public void Menampilkan_data_area() {
 		area.clickArea();
 		extentTest.log(LogStatus.PASS, "Menampilkan data area");
 	}
-	
+
 	@When("^Mengubah data area")
 	public void Mengubah_data_area() {
 		area.editArea(configProperties.getArea1());
@@ -335,462 +338,462 @@ public class StepDefinition {
 		area.clickSave();
 		extentTest.log(LogStatus.PASS, "Menambahkan data");
 	}
-	
-	//============================Data Merchant===================================
-	
-			@When("^Menampilkan form data merchant")
-			public void formMerchant() {
-				merchant.dataMerchant();
-				extentTest.log(LogStatus.PASS,"Menampilkan menu merchant");
-			}
-			
-			@When("^Mengurutkan baris angka pada kolom No.")
-			public void SortirNo() {
-				merchant.sortNo();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No");
-			}
-			
-			@When("^Mengurutkan baris pada kolom batch")
-			public void SortirBatch() {
-				merchant.sortBatch();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom batch");
-			}
-			
-			@When("^Mengurutkan baris pada kolom nama merchant")
-			public void SortirMerchant() {
-				merchant.sortMerchant();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom nama merchant");
-			}
-			
-			@When("^Mengurutkan baris pada kolom address")
-			public void SortirAddress() {
-				merchant.sortAddress();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom address");
-			}
-			
-			@When("^Mengurutkan baris pada kolom category")
-			public void SortirCategory() {
-				merchant.sortCategory();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom category");		
-			}
-			
-			@When("^Mengurutkan baris pada kolom officer")
-			public void SortirOfficer() {
-				merchant.sortOfficer();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom officer");		
-			}
-			
-			@When("^Mengurutkan baris pada kolom status visit")
-			public void SortirStatus() {
-				merchant.sortStatus();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom status visit");		
-			}
-			
-			@When("^Pindah ke tabel selanjutnya")
-			public void NextPage() {
-				merchant.nextButton();
-				extentTest.log(LogStatus.PASS,"Pindah ke tabel selanjutnya");
-			}
-			
-			@When("^Mencari nama merchant")
-			public void SearchMerchant() {
-				merchant.searchMerchant(configProperties.getSmerchant());
-				extentTest.log(LogStatus.PASS,"Mencari nama merchant");
-			}
-			
-			@When("^Menambahkan data merchant")
-			public void addMerchant() {
-				merchant.addNew();
-				extentTest.log(LogStatus.PASS, "Menampilkan form new merchant");
-			}
-			
-			@When("^Menginput batch")
-			public void addBatch() {
-				merchant.inputBatch(configProperties.getBatch());
-				extentTest.log(LogStatus.PASS, "Menginput batch");
-			}
 
-			@When("^Memilih kota")
-			public void addKota() {
-				merchant.nameKota();
-				extentTest.log(LogStatus.PASS, "Memilih kota");
-			}
-			
-			@When("^Memilih area")
-			public void addArea() {
-				merchant.nameArea();
-				extentTest.log(LogStatus.PASS, "Memilih area");
-			}
-			
-			@When("^Menginput merchant name")
-			public void addMerchantname() {
-				merchant.inputMerchant(configProperties.getNameMerchant());
-				extentTest.log(LogStatus.PASS, "Menginput merchant name");
-			}
-			
-			@When("^Menginput address")
-			public void addAddress() {
-				merchant.inputAddress(configProperties.getNameAddress());
-				extentTest.log(LogStatus.PASS, "Menginput address");
-			}
-			
-			@When("^Menginput address by floor")
-			public void addFloor() {
-				merchant.inputFloor(configProperties.getNameFloor());
-				extentTest.log(LogStatus.PASS, "Menginput address by floor");
-			}
-			
-			@When("^Menginput category")
-			public void addCategory() {
-				merchant.inputCategory(configProperties.getNameCategory());
-				extentTest.log(LogStatus.PASS, "Menginput category");
-			}
-			
-			@When("^Memilih users")
-			public void addUsers() {
-				merchant.nameUsers();
-				extentTest.log(LogStatus.PASS, "Memilih users");
-			}
-			
-			@Then("^Menyimpan input data merchant")
-			public void saveForm() {
-				merchant.saveBtn();
-				extentTest.log(LogStatus.PASS, "Menyimpan input data merchant");
-			}
-			
-	//============================Bucket Distribusi================================
-			
-			@When("^Menampilkan form data distribusi")
-			public void MenuDistribusi() {
-				distribusi.MenuDistribusi();
-				extentTest.log(LogStatus.PASS,"Drop down list yang berisi nama area");
-			}
-			
-			@When("^Mengurutkan baris angka pada kolom No. distribusi")
-			public void SortirNoDistribusi() {
-				distribusi.SortNo1();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No. distribusi");
-			}
-			
-			@When("^Mengurutkan baris pada kolom Nik")
-			public void SortirNikDistribusi() {
-				distribusi.Nik();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom Nik");
-			}
-			
-			@When("^Mengurutkan baris pada kolom Name")
-			public void SortirNameDistribusi() {
-				distribusi.SortName1();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom Name");
-			}
-			
-			@When("^Mengurutkan baris pada total data")
-			public void SortirTotalData() {
-				distribusi.SortTotalData();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada total data");
-			}
-			
-			@When("^Mengurutkan baris pada data visit")
-			public void SortirStatusVisit() {
-				distribusi.StatusVisit();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada data visit");
-			}
-			
-			@When("^Mengurutkan baris pada data unvisit")
-			public void SortirStatusUnvisit() {
-				distribusi.StatusUnvisit();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris pada data unvisit");
-			}
-			
-			@When("^Mencari data distribusi")
-			public void SearchDistribusi() {
-				distribusi.SearchDistribusi(configProperties.getSdistribusi());
-				extentTest.log(LogStatus.PASS,"Mencari nama merchant");
-			}
-			
-			@When("^Menampilkan form data No. assignment")
-			public void Assignment() {
-				distribusi.Assignment();
-				extentTest.log(LogStatus.PASS,"Menampilkan form data No. assignment");
-			}
-			
-			@When("^Memilih data assignment")
-			public void PilihDataAssignment() {
-				distribusi.PilihDataAssignment();
-				extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No.");
-			}
-			
-			@When("^Memilih user assignment")
-			public void PilihUserAssignment() {
-				distribusi.PilihUserAssignment();
-				extentTest.log(LogStatus.PASS,"Memilih user assignment");
-			}
-			
-			@When("^Memilih user assignment dari daftar list")
-			public void FormUserAssignment() {
-				distribusi.FormUserAssignment();
-				extentTest.log(LogStatus.PASS,"Memilih user assignment dari daftar list");
-			}
+	// ============================Data Merchant===================================
+
+	@When("^Menampilkan form data merchant")
+	public void formMerchant() {
+		merchant.dataMerchant();
+		extentTest.log(LogStatus.PASS, "Menampilkan menu merchant");
+	}
+
+	@When("^Mengurutkan baris angka pada kolom No.")
+	public void SortirNo() {
+		merchant.sortNo();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris angka pada kolom No");
+	}
+
+	@When("^Mengurutkan baris pada kolom batch")
+	public void SortirBatch() {
+		merchant.sortBatch();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom batch");
+	}
+
+	@When("^Mengurutkan baris pada kolom nama merchant")
+	public void SortirMerchant() {
+		merchant.sortMerchant();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom nama merchant");
+	}
+
+	@When("^Mengurutkan baris pada kolom address")
+	public void SortirAddress() {
+		merchant.sortAddress();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom address");
+	}
+
+	@When("^Mengurutkan baris pada kolom category")
+	public void SortirCategory() {
+		merchant.sortCategory();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom category");
+	}
+
+	@When("^Mengurutkan baris pada kolom officer")
+	public void SortirOfficer() {
+		merchant.sortOfficer();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom officer");
+	}
+
+	@When("^Mengurutkan baris pada kolom status visit")
+	public void SortirStatus() {
+		merchant.sortStatus();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom status visit");
+	}
+
+	@When("^Pindah ke tabel selanjutnya")
+	public void NextPage() {
+		merchant.nextButton();
+		extentTest.log(LogStatus.PASS, "Pindah ke tabel selanjutnya");
+	}
+
+	@When("^Mencari nama merchant")
+	public void SearchMerchant() {
+		merchant.searchMerchant(configProperties.getSmerchant());
+		extentTest.log(LogStatus.PASS, "Mencari nama merchant");
+	}
+
+	@When("^Menambahkan data merchant")
+	public void addMerchant() {
+		merchant.addNew();
+		extentTest.log(LogStatus.PASS, "Menampilkan form new merchant");
+	}
+
+	@When("^Menginput batch")
+	public void addBatch() {
+		merchant.inputBatch(configProperties.getBatch());
+		extentTest.log(LogStatus.PASS, "Menginput batch");
+	}
+
+	@When("^Memilih kota")
+	public void addKota() {
+		merchant.nameKota();
+		extentTest.log(LogStatus.PASS, "Memilih kota");
+	}
+
+	@When("^Memilih area")
+	public void addArea() {
+		merchant.nameArea();
+		extentTest.log(LogStatus.PASS, "Memilih area");
+	}
+
+	@When("^Menginput merchant name")
+	public void addMerchantname() {
+		merchant.inputMerchant(configProperties.getNameMerchant());
+		extentTest.log(LogStatus.PASS, "Menginput merchant name");
+	}
+
+	@When("^Menginput address")
+	public void addAddress() {
+		merchant.inputAddress(configProperties.getNameAddress());
+		extentTest.log(LogStatus.PASS, "Menginput address");
+	}
+
+	@When("^Menginput address by floor")
+	public void addFloor() {
+		merchant.inputFloor(configProperties.getNameFloor());
+		extentTest.log(LogStatus.PASS, "Menginput address by floor");
+	}
+
+	@When("^Menginput category")
+	public void addCategory() {
+		merchant.inputCategory(configProperties.getNameCategory());
+		extentTest.log(LogStatus.PASS, "Menginput category");
+	}
+
+	@When("^Memilih users")
+	public void addUsers() {
+		merchant.nameUsers();
+		extentTest.log(LogStatus.PASS, "Memilih users");
+	}
+
+	@Then("^Menyimpan input data merchant")
+	public void saveForm() {
+		merchant.saveBtn();
+		extentTest.log(LogStatus.PASS, "Menyimpan input data merchant");
+	}
+
+	// ============================Bucket Distribusi================================
+
+	@When("^Menampilkan form data distribusi")
+	public void MenuDistribusi() {
+		distribusi.MenuDistribusi();
+		extentTest.log(LogStatus.PASS, "Drop down list yang berisi nama area");
+	}
+
+	@When("^Mengurutkan baris angka pada kolom No. distribusi")
+	public void SortirNoDistribusi() {
+		distribusi.SortNo1();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris angka pada kolom No. distribusi");
+	}
+
+	@When("^Mengurutkan baris pada kolom Nik")
+	public void SortirNikDistribusi() {
+		distribusi.Nik();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom Nik");
+	}
+
+	@When("^Mengurutkan baris pada kolom Name")
+	public void SortirNameDistribusi() {
+		distribusi.SortName1();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom Name");
+	}
+
+	@When("^Mengurutkan baris pada total data")
+	public void SortirTotalData() {
+		distribusi.SortTotalData();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada total data");
+	}
+
+	@When("^Mengurutkan baris pada data visit")
+	public void SortirStatusVisit() {
+		distribusi.StatusVisit();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada data visit");
+	}
+
+	@When("^Mengurutkan baris pada data unvisit")
+	public void SortirStatusUnvisit() {
+		distribusi.StatusUnvisit();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada data unvisit");
+	}
+
+	@When("^Mencari data distribusi")
+	public void SearchDistribusi() {
+		distribusi.SearchDistribusi(configProperties.getSdistribusi());
+		extentTest.log(LogStatus.PASS, "Mencari nama merchant");
+	}
+
+	@When("^Menampilkan form data No. assignment")
+	public void Assignment() {
+		distribusi.Assignment();
+		extentTest.log(LogStatus.PASS, "Menampilkan form data No. assignment");
+	}
+
+	@When("^Memilih data assignment")
+	public void PilihDataAssignment() {
+		distribusi.PilihDataAssignment();
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris angka pada kolom No.");
+	}
+
+	@When("^Memilih user assignment")
+	public void PilihUserAssignment() {
+		distribusi.PilihUserAssignment();
+		extentTest.log(LogStatus.PASS, "Memilih user assignment");
+	}
+
+	@When("^Memilih user assignment dari daftar list")
+	public void FormUserAssignment() {
+		distribusi.FormUserAssignment();
+		extentTest.log(LogStatus.PASS, "Memilih user assignment dari daftar list");
+	}
+
+	@When("^Menyimpan perubahan assignment")
+	public void SubmitAssignment() {
+		distribusi.SubmitAssignment();
+		extentTest.log(LogStatus.PASS, "Menyimpan perubahan assignment");
+	}
+
+//			@When("^Drop down list button action")
+//			public void DropdownAction() {
+//				extentTest.log(LogStatus.PASS,"Drop down list button action");
+//			}
+
+	@When("^Menampilkan detail distribusi")
+	public void DetailDistribusi() {
+		distribusi.ButtonAction();
+		distribusi.ViewDetail();
+		distribusi.PilihDataDistribusi();
+		extentTest.log(LogStatus.PASS, "Menampilkan detail distribusi");
+	}
+
+	@When("^Memilih data dari checkbox")
+	public void CheckboxDistribusi() {
+		distribusi.CeklisBox();
+		extentTest.log(LogStatus.PASS, "Memilih data dari checkbox");
+	}
+
+	@When("^Memilih user distribusi")
+	public void PilihUserDistribusi() {
+		distribusi.PilihUserDistribusi();
+		extentTest.log(LogStatus.PASS, "Memilih user distribusi");
+	}
+
+	@When("^Memilih user distribusi dari daftar list")
+	public void FormUserDistribusi() {
+		distribusi.formUserDistribusi();
+		extentTest.log(LogStatus.PASS, "Memilih user dari daftar list");
+	}
+
+	@When("^Menyimpan perubahan distribusi")
+	public void SubmitDistribusi() {
+		distribusi.SubmitDistribusi();
+		extentTest.log(LogStatus.PASS, "Menyimpan perubahan distribusi");
+	}
+
+	// ============================ Bucket Validasi ================================
 	
-			
-			@When("^Menyimpan perubahan assignment")
-			public void SubmitAssignment() {
-				distribusi.SubmitAssignment();
-				extentTest.log(LogStatus.PASS,"Menyimpan perubahan assignment");
-			}
-			
-			@When("^Drop down list button action")
-			public void DropdownAction() {
-				distribusi.ButtonAction();
-				extentTest.log(LogStatus.PASS,"Drop down list button action");
-			}
-			
-			@When("^Menampilkan detail distribusi")
-			public void DetailDistribusi() {
-				distribusi.PilihDataDistribusi();
-				extentTest.log(LogStatus.PASS,"Menampilkan detail distribusi");
-			}
-			
-			@When("^Memilih data dari checkbox")
-			public void CheckboxDistribusi() {
-				distribusi.CeklisBox();
-				extentTest.log(LogStatus.PASS,"Memilih data dari checkbox");
-			}
-			
-			@When("^Memilih user distribusi")
-			public void PilihUserDistribusi() {
-				distribusi.PilihUserDistribusi();
-				extentTest.log(LogStatus.PASS,"Memilih user distribusi");
-			}
-			
-			@When("^Memilih user distribusi dari daftar list")
-			public void FormUserDistribusi() {
-				distribusi.formUserDistribusi();
-				extentTest.log(LogStatus.PASS,"Memilih user dari daftar list");
-			}
-	
-			@When("^Menyimpan perubahan distribusi")
-			public void SubmitDistribusi() {
-				distribusi.SubmitDistribusi();
-				extentTest.log(LogStatus.PASS,"Menyimpan perubahan distribusi");
-			}
-			
-	//============================ Bucket Validasi ================================
 	@When("^Menampilkan Data Validation")
 	public void Menampilkan_Data_Validation() {
 		validasi.bucketValidasi();
-		extentTest.log(LogStatus.PASS,"Menampilkan Data Validation");
+		extentTest.log(LogStatus.PASS, "Menampilkan Data Validation");
 	}
-		
+
 	@When("^Drop down list yang berisi nama area")
 	public void Drop_down_list_yang_berisi_nama_area() {
 		validasi.FilterArea();
-		extentTest.log(LogStatus.PASS,"Drop down list yang berisi nama area");
+		extentTest.log(LogStatus.PASS, "Drop down list yang berisi nama area");
 	}
-		
+
 	@When("^Menampilkan filter data berdasarkan nama area")
 	public void Menampilkan_filter_data_berdasarkan_nama_area() {
 		validasi.BtnFilter();
-		extentTest.log(LogStatus.PASS,"Menampilkan filter data berdasarkan nama area");
+		extentTest.log(LogStatus.PASS, "Menampilkan filter data berdasarkan nama area");
 	}
-		
+
 	@When("^Mencari Data merchant name")
 	public void Mencari_Data_merchant_name() {
 		validasi.Search(configProperties.getSearch1());
-		extentTest.log(LogStatus.PASS,"Mencari Data merchant name");
+		extentTest.log(LogStatus.PASS, "Mencari Data merchant name");
 	}
-	
+
 	@When("^Menampilkan Detail Visit")
 	public void Menampilkan_Detail_Visit() {
 		validasi.View();
-		extentTest.log(LogStatus.PASS,"Menampilkan Detail Visit");
+		extentTest.log(LogStatus.PASS, "Menampilkan Detail Visit");
 	}
-		
+
 	@When("^Menampilkan Pop up Validate form")
 	public void Menampilkan_Pop_up_Validate_form() {
 		validasi.Validate();
-		extentTest.log(LogStatus.PASS,"Menampilkan Pop up Validate form");
+		extentTest.log(LogStatus.PASS, "Menampilkan Pop up Validate form");
 	}
 
 	@When("^Menyimpan data validate")
 	public void Menyimpan_data_validate() {
 		validasi.SubmitValidate();
-		extentTest.log(LogStatus.PASS,"Menyimpan data validate");
+		extentTest.log(LogStatus.PASS, "Menyimpan data validate");
 	}
-		
+
 	@When("^Tidak menyimpan data validate")
 	public void Tidak_menyimpan_data_validate() {
 		validasi.CancelValidate();
-		extentTest.log(LogStatus.PASS,"Tidak menyimpan data validate");
+		extentTest.log(LogStatus.PASS, "Tidak menyimpan data validate");
 	}
 
-		
 	@When("^Menampilkan Pop up return form")
 	public void Menampilkan_Pop_up_return_form() {
 		validasi.Return();
-		extentTest.log(LogStatus.PASS,"Menampilkan Pop up return form");
+		extentTest.log(LogStatus.PASS, "Menampilkan Pop up return form");
 	}
 
 	@When("^Mengisi Note return")
 	public void Mengisi_Note_return() {
 		validasi.NotesReturn(configProperties.getNotesreturn());
-		extentTest.log(LogStatus.PASS,"Mengisi Note return");
+		extentTest.log(LogStatus.PASS, "Mengisi Note return");
 	}
-		
+
 	@When("^Menyimpan data return")
 	public void Menyimpan_data_return() {
 		validasi.SubmitReturn();
-		extentTest.log(LogStatus.PASS,"Menyimpan data return");
+		extentTest.log(LogStatus.PASS, "Menyimpan data return");
 	}
-		
+
 	@When("^Tidak menyimpan data return")
 	public void Tidak_menyimpan_data_return() {
 		validasi.CancelReturn();
-		extentTest.log(LogStatus.PASS,"Tidak menyimpan data return");
+		extentTest.log(LogStatus.PASS, "Tidak menyimpan data return");
 	}
-		
-		
+
 	@When("^Menampilkan Pop up reject form")
 	public void Menampilkan_Pop_up_rejectform() {
 		validasi.Reject();
-		extentTest.log(LogStatus.PASS,"Menampilkan Pop up reject form");
+		extentTest.log(LogStatus.PASS, "Menampilkan Pop up reject form");
 	}
-		
+
 	@When("^Mengisi Note reject")
 	public void Mengisi_Note_reject() {
 		validasi.NotesReject(configProperties.getNotesreject());
-		extentTest.log(LogStatus.PASS,"Mengisi Note reject");
+		extentTest.log(LogStatus.PASS, "Mengisi Note reject");
 	}
-		
+
 	@When("^Menyimpan data reject")
 	public void Menyimpan_data_reject() {
 		validasi.SubmitReject();
-		extentTest.log(LogStatus.PASS,"Menyimpan data reject");
+		extentTest.log(LogStatus.PASS, "Menyimpan data reject");
 	}
-		
+
 	@When("^Tidak menyimpan data reject")
 	public void Tidak_menyimpan_data_reject() {
 		validasi.CancelReject();
-		extentTest.log(LogStatus.PASS,"Tidak menyimpan data reject");
+		extentTest.log(LogStatus.PASS, "Tidak menyimpan data reject");
 	}
+
+	// ============================ Monitoring =====================================
 	
-	//============================ Monitoring =====================================	
 	@When("^Menampilkan Monitoring")
 	public void Menampilkan_Monitoring() {
 		monitoring.PageMonitoring();
-		extentTest.log(LogStatus.PASS,"Menampilkan Monitoring");
+		extentTest.log(LogStatus.PASS, "Menampilkan Monitoring");
 	}
-	
+
 	@When("^Drop down list yang berisi angka")
 	public void Drop_down_list_yang_berisi_angka() {
 		monitoring.showEntries1();
-		extentTest.log(LogStatus.PASS,"Drop down list yang berisi angka");
+		extentTest.log(LogStatus.PASS, "Drop down list yang berisi angka");
 	}
-	
+
 	@When("^Mengurutkan baris angka pada kolom No")
 	public void Mengurutkan_baris_angka_pada_kolom_No() {
 		monitoring.No();
-		extentTest.log(LogStatus.PASS,"Mengurutkan baris angka pada kolom No");
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris angka pada kolom No");
 	}
-	
+
 	@When("^Mengurutkan baris pada kolom nama")
 	public void Mengurutkan_baris_pada_kolom_nama() {
 		monitoring.Name();
-		extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom nama");
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom nama");
 	}
-	
+
 	@When("^Mengurutkan baris pada kolom total data")
 	public void Mengurutkan_baris_pada_kolom_total_data() {
 		monitoring.TotalData();
-		extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom total data");
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom total data");
 	}
-	
+
 	@When("^Mengurutkan baris pada kolom total visit")
 	public void Mengurutkan_baris_pada_kolom_total_visit() {
 		monitoring.TotalVisit();
-		extentTest.log(LogStatus.PASS,"Mengurutkan baris pada kolom total visit");
+		extentTest.log(LogStatus.PASS, "Mengurutkan baris pada kolom total visit");
 	}
-	
+
 	@When("^Mencari Data Nama")
 	public void Mencari_Data_Nama() {
 		monitoring.txtSearch1(configProperties.getSearch2());
-		extentTest.log(LogStatus.PASS,"Mencari Data Nama");
+		extentTest.log(LogStatus.PASS, "Mencari Data Nama");
 	}
-	
+
 	@When("^Menampilkan Data Monitoring Visit")
 	public void Menampilkan_Data_Monitoring_Visit() {
 		monitoring.Detail();
-		extentTest.log(LogStatus.PASS,"Menampilkan Data Monitoring Visit");
+		extentTest.log(LogStatus.PASS, "Menampilkan Data Monitoring Visit");
 	}
-	
+
 	@When("^Mengisi tahun dan bulan")
 	public void Mengisi_tahun_dan_bulan() {
 		monitoring.Period();
-		extentTest.log(LogStatus.PASS,"Mengisi tahun dan bulan");
+		extentTest.log(LogStatus.PASS, "Mengisi tahun dan bulan");
 	}
-	
+
 	@When("^Menampilkan filter data berdasarkan tahun dan bulan")
 	public void Menampilkan_filter_data_berdasarkan_tahun_dan_bulan() {
 		monitoring.Filter();
-		extentTest.log(LogStatus.PASS,"Menampilkan filter data berdasarkan tahun dan bulan");
+		extentTest.log(LogStatus.PASS, "Menampilkan filter data berdasarkan tahun dan bulan");
 	}
-	
+
 	@When("^Drop down list yang berisi angka untuk tabel")
 	public void Drop_down_list_yang_berisi_angka_untuk_tabel() {
 		monitoring.showEntries2();
-		extentTest.log(LogStatus.PASS,"Drop down list yang berisi angka untuk tabel");
+		extentTest.log(LogStatus.PASS, "Drop down list yang berisi angka untuk tabel");
 	}
-	
+
 	@When("^Pindah ke halaman selanjutnya")
 	public void Pindah_ke_halaman_selanjutnya() {
 		monitoring.PageButton();
-		extentTest.log(LogStatus.PASS,"Pindah ke halaman selanjutnya");
+		extentTest.log(LogStatus.PASS, "Pindah ke halaman selanjutnya");
 	}
-	
+
 	@When("^Mencari Data Master Merchant")
 	public void Mencari_Data_Master_Merchant() {
 		monitoring.txtSearch2(configProperties.getSearch3());
-		extentTest.log(LogStatus.PASS,"Mencari Data Master Merchant");
+		extentTest.log(LogStatus.PASS, "Mencari Data Master Merchant");
 	}
-	
+
 	@When("^Menampilkan View Image")
 	public void Menampilkan_View_Image() {
 		monitoring.ViewImage();
-		extentTest.log(LogStatus.PASS,"Mencari Data Nama");
+		extentTest.log(LogStatus.PASS, "Mencari Data Nama");
 	}
-	
+
 	@When("^Menampilkan View EDC")
 	public void Menampilkan_View_EDC() {
 		monitoring.ViewEDC1();
-		extentTest.log(LogStatus.PASS,"Menampilkan View EDC");
+		extentTest.log(LogStatus.PASS, "Menampilkan View EDC");
 	}
-	
+
 	@When("^Menampilkan merchant issue sesuai dengan tahun dan bulan")
 	public void Menampilkan_merchant_issue_sesuai_dengan_tahun_dan_bulan() {
 		monitoring.merchantIssue();
-		extentTest.log(LogStatus.PASS,"Menampilkan merchant issue sesuai dengan tahun dan bulan");
+		extentTest.log(LogStatus.PASS, "Menampilkan merchant issue sesuai dengan tahun dan bulan");
 	}
-	
+
 	@When("^Drop down list yang berisi angka untuk tabel Merchant Issue")
 	public void Drop_down_list_yang_berisi_angka_untuk_tabel_Merchant_Issue() {
 		monitoring.showEntries3();
-		extentTest.log(LogStatus.PASS,"Drop down list yang berisi angka untuk tabel Merchant Issue");
+		extentTest.log(LogStatus.PASS, "Drop down list yang berisi angka untuk tabel Merchant Issue");
 	}
-	
+
 	@When("^Mencari Data Merchant Issue")
 	public void Mencari_Data_Merchant_Issue() {
 		monitoring.txtSearch3(configProperties.getSearch4());
-		extentTest.log(LogStatus.PASS,"Mencari Data Merchant Issue");
+		extentTest.log(LogStatus.PASS, "Mencari Data Merchant Issue");
 	}
-	
+
 	@Then("^Menampilkan View EDC Merchant Issue")
 	public void Menampilkan_View_EDC_Merchant_Issue() {
 		monitoring.ViewEDC2();
-		extentTest.log(LogStatus.PASS,"Menampilkan View EDC Merchant Issue");
-	}	
-	
+		extentTest.log(LogStatus.PASS, "Menampilkan View EDC Merchant Issue");
+	}
+
 	// ============================Report Activity=================================
-	
+
 	@When("^Menampilkan menu reporting")
 	public void toReport() {
 		reportPage.toReport();
@@ -829,44 +832,46 @@ public class StepDefinition {
 
 	}
 
-	//============================= Login Surveyor activity =====================
+	// ============================= Login Surveyor activity =====================
+	
 	@When("^logout akun administrator")
 	public void logout_akun_administrator() {
 		ls.logout();
 		extentTest.log(LogStatus.PASS, "logout akun administrator");
 	}
-	
+
 	@When("^Menampilkan form login surveyor")
 	public void Menampilkan_form_login_surveyor() {
 		assertEquals(configProperties.getTxtLogin(), ls.getTxtLogin());
 		extentTest.log(LogStatus.PASS, "Menampilkan form login surveyor");
 	}
-	
+
 	@When("^Mengisi username surveyor")
 	public void Mengisi_username_surveyor() {
 		ls.inputUsernameS(configProperties.getSurveyor());
 		extentTest.log(LogStatus.PASS, "Mengisi username surveyor");
 	}
-	
+
 	@When("^Mengisi password surveyor")
 	public void Mengisi_password_surveyor() {
 		ls.inputPasswordS(configProperties.getPassword());
 		extentTest.log(LogStatus.PASS, "Mengisi password surveyor");
 	}
-	
+
 	@When("^Login ke sistem JCB surveyor")
 	public void Login_ke_sistem_JCB_surveyor() {
 		ls.clickButtonLoginS();
 		extentTest.log(LogStatus.PASS, "Login ke sistem JCB surveyor");
 	}
-	
+
 	@When("^Muncul pesan selamat datang user")
 	public void Muncul_pesan_selamat_datang_user() {
 		assertEquals(configProperties.getMessageSurveyor(), ls.getMessageTextS());
 		extentTest.log(LogStatus.PASS, "Muncul pesan selamat datang user");
 	}
-	
+
 	// ============================Worklist Activity=============================
+	
 	@When("^Menampilkan submenu")
 	public void submenuWorklist() {
 		worklistPage.toWorklist();

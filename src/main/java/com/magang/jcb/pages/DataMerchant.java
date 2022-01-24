@@ -81,16 +81,19 @@ private WebDriver driver;
 	}
 	
 	public void sortNo() {
+	
 		sortNo.click();
 		
 	}
 	
 	public void sortBatch() {
+	
 		sortBatch.click();
 		
 	}
 	
 	public void sortMerchant() {
+
 		sortMerchant.click();
 	}
 	
@@ -99,14 +102,17 @@ private WebDriver driver;
 	}
 	
 	public void sortCategory() {
+	
 		sortCategory.click();
 	}
 	
 	public void sortOfficer() {
+	
 		sortOfficer.click();
 	}
 	
 	public void sortStatus() {
+
 		sortStatus.click();
 	}
 	
@@ -170,6 +176,8 @@ private WebDriver driver;
 	public void searchMerchant(String smerchant) {
 		searchMerchant.sendKeys(smerchant);
 	}
+	
+
 
 	
 }

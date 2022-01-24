@@ -1,7 +1,7 @@
 Feature: Bucket distribusi
 Scenario: Testing bucket distribusi
 		When Menampilkan form data distribusi
-		And Mengurutkan baris angka pada kolom No.
+		And Mengurutkan baris angka pada kolom No. distribusi
 		And Mengurutkan baris pada kolom Nik
 		And Mengurutkan baris pada kolom Name
 		And Mengurutkan baris pada total data

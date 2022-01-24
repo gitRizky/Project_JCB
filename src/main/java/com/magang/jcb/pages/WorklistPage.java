@@ -50,7 +50,7 @@ public class WorklistPage {
 
 	@FindBy(id = "data-worklist_previous")
 	private WebElement prevPage;
-	
+
 	public WebElement getAlertSuccess() {
 		return alertSuccess;
 	}
@@ -72,15 +72,12 @@ public class WorklistPage {
 	}
 
 	public void toNewData() {
-		for (WebElement webElement : lstItem) {
-			System.out.println(webElement.getText());
-		}
 		lstItem.get(0).click();
 	}
-	
+
 	public void toAddNewData() {
 		lstItem.get(3).click();
-		
+
 	}
 
 	public void chooseArea() {
@@ -114,7 +111,7 @@ public class WorklistPage {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			
+
 			e.printStackTrace();
 		}
 		conditionBtn.click();
@@ -124,14 +121,14 @@ public class WorklistPage {
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			
+
 			e.printStackTrace();
 		}
 		nextPage.click();
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
-			
+
 			e.printStackTrace();
 		}
 		prevPage.click();
