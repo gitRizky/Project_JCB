@@ -77,7 +77,9 @@ private WebDriver driver;
 	
 	
 	public void dataMerchant() {
+		
 		dataMerchant.click();
+		
 	}
 	
 	public void sortNo() {
@@ -176,6 +178,8 @@ private WebDriver driver;
 	public void searchMerchant(String smerchant) {
 		searchMerchant.sendKeys(smerchant);
 	}
+
+	
 	
 
 
